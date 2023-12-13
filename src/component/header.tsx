@@ -70,6 +70,11 @@ export default function Header() {
                             </li>
                             <li>
                                 <Link href="#">
+                                    <span>할인</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="#">
                                     <span>#PICK</span>
                                 </Link>
                             </li>
@@ -78,6 +83,13 @@ export default function Header() {
                                     <span>커밍순</span>
                                 </Link>
                             </li>
+                            {/*<li>*/}
+                            {/*    <Link href="#">*/}
+                            {/*        <span className={'point'}>*/}
+                            {/*            BLACK FRIDAY*/}
+                            {/*        </span>*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
                             <li>
                                 <Link href="#">
                                     <span>콜라보</span>

@@ -117,7 +117,7 @@ body {
         @apply bg-white dark:bg-gray-900;
         @apply border-b-2 border-solid border-[#bcbcbc] dark:border-gray-700;
         > ul {
-            padding: 0 27px;
+            @apply px-7 max-sm:px-4;
             > li {
                 display: inline-block;
                 margin-right: 25px;
@@ -129,6 +129,10 @@ body {
                     line-height: 60px;
                     display: block;
                     box-sizing: border-box;
+                    > span.point {
+                        color: #ff4000 !important;
+                        font-weight: 600;
+                    }
                 }
             }
 
