@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+    // directUrl = env("DIRECT_URL")
+}
+
+enum Provider {
+    Credentials
+    kakao
+    naver
+}
+
+model User {
+    idx         Int      @id @default(autoincrement())
+    username    String   @unique @db.Char(50)
+    password    String   @db.Char(100)
+    name        String   @db.Char(15)
+    email       String   @db.Char(50)
+    contact     String?  @db.Char(13)
+    avatar      String?
+    provider    Provider @default(Credentials)
+    login_level Int      @default(1)
+    created_at  DateTime @default(dbgenerated("NOW()")) @db.DateTime
+    updated_at  DateTime @default(dbgenerated("NOW() ON UPDATE NOW()")) @db.DateTime
+}
