@@ -3,14 +3,14 @@ import KakaoProvider from 'next-auth/providers/kakao';
 import NaverProvider from 'next-auth/providers/naver';
 import { Session } from 'next-auth';
 import { JWT } from 'next-auth/jwt';
-import bcrypt from 'bcrypt';
 import { Provider } from '@prisma/client';
 import db from '@/utils/db';
 import { StringArg } from '@/types/type';
+import bcrypt from 'bcrypt';
 
 export const authOptions = {
     pages: {
-        signIn: '/auth/signin',
+        // signIn: '/auth/signin',
         newUser: '/auth.ts/new-user', // New users will be directed here on first sign in (leave the property out if not of interest)
     },
     session: {
@@ -157,12 +157,12 @@ export const authOptions = {
                         login_level: true,
                     },
                     where: {
-                        username: token?.email,
+                        username: token?.username,
                         provider: Provider.naver,
                     },
                 });
 
-                if (!exUser) {
+                if (exUser) {
                     await db.user.create({
                         data: {
                             username: email,
