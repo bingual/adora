@@ -23,13 +23,13 @@ body {
         sans-serif;
 }
 
-.base-text-color {
-    @apply text-gray-900 dark:text-gray-300;
-}
-
-.lg-text-color {
-    @apply text-black dark:text-white font-bold;
-}
+//.base-text-color {
+//    @apply text-gray-900 dark:text-gray-300;
+//}
+//
+//.lg-text-color {
+//    @apply text-black dark:text-white;
+//}
 
 .base-bg-color {
     @apply bg-white dark:bg-gray-900;
@@ -191,7 +191,7 @@ body {
 .titleArea {
     padding: 0 15px;
     h2 {
-        @apply text-xl;
+        @apply text-xl text-black dark:text-white;
         line-height: 35px;
         color: #000;
         text-align: left;
@@ -213,7 +213,7 @@ body {
     line-height: 1.4;
     margin-bottom: 50px;
     > div {
-        @apply text-xl;
+        @apply text-2xl text-black dark:text-white;
         font-weight: 700;
         margin-bottom: 20px;
     }

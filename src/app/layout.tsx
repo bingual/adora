@@ -12,29 +12,29 @@ export default function RootLayout({
 }) {
     return (
         <>
-            <html lang="ko">
-                <head>
-                    <title>Adora</title>
-                    <ThemeModeScript />
-                </head>
-                <body className={'bg-[#f5f5f5] dark:bg-gray-800'}>
-                    <div className={'flex justify-center'}>
-                        <div
-                            className={
-                                'relative shadow-lg w-full max-w-[640px] bg-white dark:bg-gray-900'
-                            }
-                        >
-                            <SessionProvider>
+            <SessionProvider>
+                <html lang="ko">
+                    <head>
+                        <title>Adora</title>
+                        <ThemeModeScript />
+                    </head>
+                    <body className={'bg-[#f5f5f5] dark:bg-gray-800'}>
+                        <div className={'flex justify-center'}>
+                            <div
+                                className={
+                                    'relative shadow-lg w-full max-w-[640px] bg-white dark:bg-gray-900'
+                                }
+                            >
                                 <Header />
                                 <div className={'relative min-h-screen z-10'}>
                                     {children}
                                 </div>
                                 <Navigation />
-                            </SessionProvider>
+                            </div>
                         </div>
-                    </div>
-                </body>
-            </html>
+                    </body>
+                </html>
+            </SessionProvider>
         </>
     );
 }

@@ -9,14 +9,18 @@ export default function MemberComponent() {
             {status === 'authenticated' && (
                 <div id={'container'}>
                     <div className={'titleArea'}>
-                        <h2>마이페이지</h2>
+                        <h2 className={'lg-text-color'}>마이페이지</h2>
                     </div>
                     <div className={'mypage-wr'}>
                         <div className={'sec_01'}>
                             <div>
-                                <span>{session?.user.name} 님은</span>
+                                <span className={'lg-text-color'}>
+                                    {session?.user.name} 님은
+                                </span>
                                 <br />
-                                <span>[일반회원] 입니다.</span>
+                                <span className={'lg-text-color'}>
+                                    [일반회원] 입니다.
+                                </span>
                             </div>
                             <Button
                                 onClick={async () => {
