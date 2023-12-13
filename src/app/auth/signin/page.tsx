@@ -24,7 +24,7 @@ export default function AuthSignin() {
         res?.status === 401 && alert('로그인 정보가 일치 하지 않습니다.');
 
         if (res?.status === 200) {
-            router.push('/member');
+            router.push('/');
             reset();
         }
     };
@@ -54,7 +54,7 @@ export default function AuthSignin() {
                             onClick={async () => {
                                 await signIn('kakao', {
                                     redirect: true,
-                                    callbackUrl: '/member',
+                                    callbackUrl: '/',
                                 });
                             }}
                             className={
@@ -68,7 +68,7 @@ export default function AuthSignin() {
                             onClick={async () => {
                                 await signIn('naver', {
                                     redirect: true,
-                                    callbackUrl: '/member',
+                                    callbackUrl: '/',
                                 });
                             }}
                             className={

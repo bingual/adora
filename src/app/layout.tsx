@@ -17,7 +17,7 @@ export default function RootLayout({
                     <title>Adora</title>
                     <ThemeModeScript />
                 </head>
-                <body className={'bg-[#f5f5f5] dark:bg-gray-800 '}>
+                <body className={'bg-[#f5f5f5] dark:bg-gray-800'}>
                     <div className={'flex justify-center'}>
                         <div
                             className={

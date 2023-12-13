@@ -21,7 +21,7 @@ export const signup = async (formData: SignupFormTypes) => {
             password: hashedPassword,
         },
     });
-    redirect('/member');
+    redirect('/auth/signin');
 };
 
 export const confirmUsername = async (username: StringArg) => {
