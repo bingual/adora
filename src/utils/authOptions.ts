@@ -10,7 +10,7 @@ import bcrypt from 'bcrypt';
 
 export const authOptions = {
     pages: {
-        // signIn: '/auth/signin',
+        signIn: '/auth/signin',
         newUser: '/auth.ts/new-user', // New users will be directed here on first sign in (leave the property out if not of interest)
     },
     session: {
@@ -162,7 +162,7 @@ export const authOptions = {
                     },
                 });
 
-                if (exUser) {
+                if (!exUser) {
                     await db.user.create({
                         data: {
                             username: email,

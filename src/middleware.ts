@@ -19,15 +19,10 @@ export async function middleware(req: NextRequest, event: NextFetchEvent) {
     if (pathname === '/auth/signin' && token) {
         return NextResponse.redirect(new URL('/', req.url));
     }
-
-    // 비 로그인 시 회원 페이지 접근 불가
-    if (pathname === '/member' && !token) {
-        return NextResponse.redirect(new URL('/auth/signin', req.url));
-    }
 }
 
 // 해당 라우트 에서만 미들 웨어 실행
 export const config = {
     // matcher: '/((?!api|_next/static|_next/image|favicon.ico|img).*)',
-    matcher: ['/auth/signin', '/auth/signup', '/member'],
+    matcher: ['/auth/signin', '/auth/signup'],
 };

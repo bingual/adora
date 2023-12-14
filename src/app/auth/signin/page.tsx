@@ -1,14 +1,14 @@
 'use client';
 import { Button, Label, TextInput } from 'flowbite-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { LoginFormTypes } from '@/types/type';
 
 export default function AuthSignin() {
     const router = useRouter();
-
+    const { data: session, status, update } = useSession();
     const { register, handleSubmit, reset } = useForm<LoginFormTypes>({
         mode: 'onSubmit',
     });
@@ -22,8 +22,8 @@ export default function AuthSignin() {
         });
 
         res?.status === 401 && alert('로그인 정보가 일치 하지 않습니다.');
-
         if (res?.status === 200) {
+            await update();
             router.push('/member');
         }
     };
