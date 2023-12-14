@@ -24,7 +24,7 @@ export const SignupFormSchema = z.object({
     confirmPassword: z
         .string()
         .regex(
-            /^(?=.*[a-zA-Z])(?=.*[`~!@#$%^&*()_+=;:'",.<>/?-])(?=.*[0-9]).{7,19}\S$/g,
+            /^(?=.*[a-zA-Z])(?=.*[`~!@#$%^&*()_+=;:'",.<>/?-])(?=.*[0-9]).{7,14}\S$/g,
             {
                 message:
                     '공백을 제외한 영문 숫자 특수기호 조합 8자리 이상 15자리 이하로 입력해주세요.',
@@ -33,7 +33,7 @@ export const SignupFormSchema = z.object({
         .trim(),
     name: z
         .string()
-        .regex(/^[a-zA-Z-가-힣]+$/, {
+        .regex(/^[a-zA-Z가-힣]+$/, {
             message: '한글과 영문만 입력해주세요.',
         })
         .min(2, { message: '2자리 이상 입력해주세요.' })

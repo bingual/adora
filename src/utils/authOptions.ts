@@ -104,7 +104,7 @@ export const authOptions = {
                         login_level: true,
                     },
                     where: {
-                        username: token?.email,
+                        username: email,
                         provider: Provider.kakao,
                     },
                 });
@@ -157,7 +157,7 @@ export const authOptions = {
                         login_level: true,
                     },
                     where: {
-                        username: token?.username,
+                        username: email,
                         provider: Provider.naver,
                     },
                 });
