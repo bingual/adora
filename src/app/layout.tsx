@@ -4,6 +4,7 @@ import { SessionProvider } from 'next-auth/react';
 import { ThemeModeScript } from 'flowbite-react';
 import Header from '@/component/header';
 import Navigation from '@/component/navigation';
+import Footer from '@/component/footer';
 
 export default function RootLayout({
     children,
@@ -18,7 +19,7 @@ export default function RootLayout({
                         <title>Adora</title>
                         <ThemeModeScript />
                     </head>
-                    <body className={'bg-[#f5f5f5] dark:bg-gray-800'}>
+                    <body>
                         <div className={'flex justify-center'}>
                             <div
                                 className={
@@ -29,6 +30,7 @@ export default function RootLayout({
                                 <div className={'relative min-h-screen z-10'}>
                                     {children}
                                 </div>
+                                <Footer />
                                 <Navigation />
                             </div>
                         </div>

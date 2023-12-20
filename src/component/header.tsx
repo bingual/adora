@@ -90,11 +90,11 @@ export default function Header() {
                             {/*        </span>*/}
                             {/*    </Link>*/}
                             {/*</li>*/}
-                            <li>
-                                <Link href="#">
-                                    <span>콜라보</span>
-                                </Link>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <Link href="#">*/}
+                            {/*        <span>콜라보</span>*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
                             <li>
                                 <Link href="#">
                                     <span>브랜드</span>
