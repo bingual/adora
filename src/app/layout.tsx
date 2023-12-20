@@ -20,15 +20,11 @@ export default function RootLayout({
                         <ThemeModeScript />
                     </head>
                     <body>
-                        <div className={'flex justify-center'}>
-                            <div
-                                className={
-                                    'relative shadow-lg w-full max-w-[640px] bg-white dark:bg-gray-900'
-                                }
-                            >
+                        <div className={'pc_mo-wr'}>
+                            <div id={'mobile'}>
                                 <Header />
-                                <div className={'relative min-h-screen z-10'}>
-                                    {children}
+                                <div id={'wrap'}>
+                                    <div id={'container'}>{children}</div>
                                 </div>
                                 <Footer />
                                 <Navigation />

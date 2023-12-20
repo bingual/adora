@@ -5,12 +5,46 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css');
 @import url('https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
 
-html {
-    font-size: 15px;
+// initialize start
+html,
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+button,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-body {
-    @apply bg-[#f5f5f5] dark:bg-gray-800;
+*,
+html,
+body,
+input,
+select,
+textarea,
+button {
     font-family:
         'Pretendard Variable',
         Pretendard,
@@ -30,36 +64,28 @@ body {
     word-break: keep-all;
 }
 
-.loading-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
+html {
+    @apply text-base;
+    width: 100%;
+    height: 100%;
 }
 
-.btnNormal {
-    @apply text-xs text-[#222] dark:text-gray-200;
-    @apply border border-solid border-[#dedede] bg-white dark:border-white dark:bg-black;
-    min-width: 60px;
-    display: inline-block;
-    box-sizing: border-box;
-    border-radius: 0;
-    font-weight: normal;
-    text-decoration: none;
-    vertical-align: middle;
-    word-spacing: -0.5px;
-    letter-spacing: 0;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
+html,
+body {
+    @apply bg-[#f5f5f5] dark:bg-gray-800;
 }
 
-// 상단
+body,
+code {
+    @apply text-base;
+    min-width: 320px;
+    color: #1b1b1b;
+    background: #fff;
+    -webkit-text-size-adjust: none;
+}
+// initialize end
+
+// layout start
 #header {
     max-width: 640px;
     margin: 0 auto;
@@ -229,7 +255,30 @@ body {
     }
 }
 
-// 하단바
+.pc_mo-wr {
+    display: flex;
+    justify-content: center;
+}
+
+#wrap {
+    position: relative;
+    z-index: 2;
+}
+
+#container {
+    margin: 0 !important;
+    padding-bottom: 20px;
+    min-height: calc(100vh - 500px);
+}
+
+#mobile {
+    @apply bg-white dark:bg-gray-900;
+    max-width: 640px;
+    box-shadow: 0 0 16px rgb(50 50 50 / 12%);
+    position: relative;
+    width: 100%;
+}
+
 .navigation {
     max-width: 640px;
     margin: 0 auto;
@@ -267,13 +316,40 @@ body {
         }
     }
 }
+// layout end
 
-#container {
-    margin: 0 !important;
-    padding-bottom: 20px;
+// global class start
+.loading-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
 }
 
-// 마이페이지
+.btnNormal {
+    @apply text-xs text-[#222] dark:text-gray-200;
+    @apply border border-solid border-[#dedede] bg-white dark:border-white dark:bg-black;
+    min-width: 60px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 0;
+    font-weight: normal;
+    text-decoration: none;
+    vertical-align: middle;
+    word-spacing: -0.5px;
+    letter-spacing: 0;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+// global class end
+
+// member start
 .titleArea {
     padding: 0 15px;
     h2 {
@@ -394,11 +470,13 @@ body {
     ul {
         li {
             padding: 15px 0;
-            a {
+            a,
+            div {
                 @apply text-base text-black dark:text-gray-300;
                 display: block;
                 position: relative;
                 font-weight: 500;
+                cursor: pointer;
             }
             a::after {
                 content: '\e93e';
@@ -409,11 +487,15 @@ body {
                 transform: translateY(-50%);
                 color: #c9c9c9;
             }
-            button {
-                @apply text-base text-black dark:text-gray-300;
-                display: block;
-                position: relative;
-                font-weight: 500;
+            div::after {
+                content: '\e93e';
+                font-family: xeicon, serif !important;
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                color: #c9c9c9;
+                cursor: pointer;
             }
         }
         li:nth-child(2) {
@@ -433,3 +515,7 @@ body {
         }
     }
 }
+// member end
+
+// home start
+// home end
