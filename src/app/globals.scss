@@ -79,8 +79,6 @@ body,
 code {
     @apply text-base;
     min-width: 320px;
-    color: #1b1b1b;
-    background: #fff;
     -webkit-text-size-adjust: none;
 }
 // initialize end
@@ -518,4 +516,166 @@ code {
 // member end
 
 // home start
+.main-wr {
+    // main banner
+    .more {
+        background: #000;
+        text-align: right;
+        a {
+            @apply text-xl;
+            color: #fff;
+            padding: 10px;
+            box-sizing: border-box;
+            display: block;
+        }
+    }
+
+    // hotItem
+    .main-product-02 {
+        margin-top: 60px;
+        box-sizing: border-box;
+        .ec-base-product {
+            padding: 0;
+            @apply bg-white dark:bg-gray-900;
+            h1 {
+                @apply text-2xl text-black dark:text-white font-bold m-1.5;
+                padding: 0 25px;
+                box-sizing: border-box;
+            }
+            ul.prdList {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px 10px;
+                width: 100%;
+                padding: 0 15px;
+                box-sizing: border-box;
+                li {
+                    vertical-align: top;
+                }
+                li[id*='anchorBoxId_'] {
+                    .thumbnail {
+                        position: relative;
+                        margin: 0 0 10px !important;
+                        .prdImg {
+                            position: relative;
+                            .over-bg {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                opacity: 0 !important;
+                                transition: all 0.5s;
+                                width: 100%;
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                            a {
+                                display: block;
+                                img {
+                                    display: block;
+                                    width: 100%;
+                                    vertical-align: top;
+                                    opacity: 1 !important;
+                                }
+                            }
+                        }
+                    }
+                    .description {
+                        margin: 0 4px !important;
+                        min-height: 10px;
+                        line-height: 1em;
+                        text-align: left;
+                        .flex-wr {
+                            > a {
+                                @apply text-base text-black dark:text-white;
+                                font-weight: 600;
+                                margin: 0 0 8px;
+                                display: inline-block;
+                            }
+                            .name {
+                                @apply text-[#222] dark:text-gray-300;
+                                line-height: 1;
+                                word-wrap: break-word;
+                                margin: 0;
+                                a {
+                                    font-weight: 400;
+                                    line-height: 18px;
+                                    span {
+                                        @apply text-base;
+                                    }
+                                }
+                            }
+                            .price-wr {
+                                margin-top: 8px;
+                                position: relative;
+                                p {
+                                    @apply text-base;
+                                    display: inline-block;
+                                    margin: 0 5px 5px 0;
+                                }
+                                p.rate {
+                                    font-weight: 600;
+                                    color: #ff4000;
+                                }
+                                p.price {
+                                    @apply text-black dark:text-white;
+                                    font-weight: 600;
+                                }
+                                p.origin_price {
+                                    color: #ccc;
+                                    text-decoration: line-through;
+                                    margin-right: 0;
+                                }
+                            }
+                        }
+                    }
+                    .count {
+                        margin-top: 10px;
+                        display: flex;
+                        .like_wrap {
+                            margin-right: 5px;
+                            .likeButton {
+                                button {
+                                    border: 0;
+                                    background: none;
+                                    img {
+                                        opacity: 0;
+                                        display: none;
+                                    }
+                                    span {
+                                        span {
+                                            @apply text-xs text-black dark:text-white;
+                                            vertical-align: middle;
+                                        }
+                                        span::before {
+                                            @apply text-base;
+                                            content: '\ea11';
+                                            font-family: xeicon, serif !important;
+                                            vertical-align: middle;
+                                            display: inline-block;
+                                            margin-top: -2px;
+                                            margin-right: 2px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .review_wrap {
+                            a {
+                                > span {
+                                    @apply text-xs text-black dark:text-white;
+                                    i {
+                                        @apply text-base;
+                                        margin: -3px 2px 0 0;
+                                        vertical-align: middle;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 // home end
