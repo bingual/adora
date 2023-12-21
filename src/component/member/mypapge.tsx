@@ -2,7 +2,7 @@
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 
-export default function MemberComponent() {
+export default function MemberMyPage() {
     const { data: session, status } = useSession();
     return (
         <>

@@ -1,5 +1,5 @@
 'use server';
-import MemberComponent from '@/component/member/page';
+import MemberMyPage from '@/component/member/mypapge';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/utils/authOptions';
 import { redirect } from 'next/navigation';
@@ -13,7 +13,7 @@ export default async function Member() {
 
     return (
         <>
-            <MemberComponent />
+            <MemberMyPage />
         </>
     );
 }
