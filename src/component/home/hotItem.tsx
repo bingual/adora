@@ -4,37 +4,40 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 export default function HomeHotItem() {
-    const [hotItemCount, setHotItemCount] = useState([
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-    ]);
+    const [hotItemList, setHotItemList] = useState(new Array(12).fill(0));
     return (
         <>
-            {/*지금 제일 핫한 아이템*/}
             <div className={'main-product-02'}>
                 <div className={'ec-base-product'}>
                     <h1>🔥 지금 제일 핫한 아이템</h1>
                     <ul className={'prdList'}>
-                        {hotItemCount.map((res, idx) => {
+                        {hotItemList.map((res, idx) => {
                             return (
                                 <li key={idx} id={`anchorBoxId_${idx}`}>
                                     <div className="thumbnail">
                                         <div className="prdImg">
                                             <Link href="#">
                                                 <Image
-                                                    src={'/home/hotItem1.jpg'}
-                                                    width={1920}
-                                                    height={1920}
+                                                    className={'w-full h-auto'}
+                                                    src={'/home/hotItem_1.jpg'}
+                                                    width={0}
+                                                    height={0}
+                                                    sizes="100vw"
                                                     alt={
                                                         '디태처블 울 블레이저 [블랙]'
                                                     }
                                                 />
                                                 <div className="over-bg">
                                                     <Image
-                                                        src={
-                                                            '/home/hotItem1.jpg'
+                                                        className={
+                                                            'w-full h-auto'
                                                         }
-                                                        width={1920}
-                                                        height={1920}
+                                                        src={
+                                                            '/home/hotItem_1.jpg'
+                                                        }
+                                                        width={0}
+                                                        height={0}
+                                                        sizes="100vw"
                                                         alt={
                                                             '디태처블 울 블레이저 [블랙]'
                                                         }
