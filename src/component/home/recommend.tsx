@@ -44,16 +44,16 @@ export default function HomeRecommend() {
                                     <div className="thumbnail">
                                         <div className="prdImg">
                                             <Link href={'#'}>
-                                                {/*<Image*/}
-                                                {/*    className={'w-full h-auto'}*/}
-                                                {/*    src={`/home/recommend_${*/}
-                                                {/*        idx + 1*/}
-                                                {/*    }.jpg`}*/}
-                                                {/*    width={0}*/}
-                                                {/*    height={0}*/}
-                                                {/*    sizes="100vw"*/}
-                                                {/*    alt="..."*/}
-                                                {/*/>*/}
+                                                <Image
+                                                    className={'w-full h-auto'}
+                                                    src={`/home/recommend_${
+                                                        idx + 1
+                                                    }.jpg`}
+                                                    width={0}
+                                                    height={0}
+                                                    sizes="100vw"
+                                                    alt="..."
+                                                />
                                                 <div className={'over-bg'}>
                                                     <Image
                                                         className={
