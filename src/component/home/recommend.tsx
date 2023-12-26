@@ -1,5 +1,6 @@
 'use client';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
 
 import 'swiper/scss';
 import 'swiper/scss/pagination';
@@ -26,6 +27,11 @@ export default function HomeRecommend() {
                     </h3>
                     <Swiper
                         className={'ec-base-product prdList'}
+                        modules={[Autoplay]}
+                        autoplay={{
+                            delay: 4000,
+                            disableOnInteraction: true,
+                        }}
                         slidesPerView={2.4}
                         spaceBetween={10}
                         loop={true}
@@ -35,7 +41,7 @@ export default function HomeRecommend() {
                             return (
                                 <SwiperSlide
                                     id={`anchorBoxId_${idx}`}
-                                    key={idx}
+                                    key={`anchorBoxId_${idx}`}
                                 >
                                     <div className="thumbnail">
                                         <div className="prdImg">
@@ -48,8 +54,8 @@ export default function HomeRecommend() {
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
-                                                    priority={true}
                                                     alt="..."
+                                                    priority={true}
                                                 />
                                                 <div className={'over-bg'}>
                                                     <Image
