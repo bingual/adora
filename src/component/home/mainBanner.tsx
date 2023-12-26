@@ -28,7 +28,7 @@ export default function HomeMainBanner() {
             >
                 {bannerItemList.map((res, idx) => {
                     return (
-                        <SwiperSlide key={idx}>
+                        <SwiperSlide key={`main-slide_${idx}`}>
                             <Image
                                 className={'w-full h-auto'}
                                 src={`/home/mainBanner/item_${idx + 1}.jpg`}

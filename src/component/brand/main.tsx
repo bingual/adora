@@ -36,7 +36,13 @@ export default function BrandMain() {
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
-                                                    priority={true}
+                                                    priority={
+                                                        bIdx === 0
+                                                            ? true
+                                                            : bIdx === 1
+                                                              ? true
+                                                              : bIdx === 2
+                                                    }
                                                     alt={'...'}
                                                 />
                                             </div>
@@ -46,25 +52,20 @@ export default function BrandMain() {
                                                 <h3>메르고</h3>
                                                 <p>캐주얼ㆍ모던</p>
                                             </div>
-                                            <img
-                                                src="https://kkst2700.cafe24.com/web/img/common/brand_arrow.png"
-                                                alt=""
-                                            />
+                                            <span />
                                         </div>
                                     </Link>
                                 </div>
                                 <Swiper
+                                    className="brand-product-wr"
                                     slidesPerView={3.15}
                                     spaceBetween={4}
-                                    pagination={{
-                                        clickable: true,
-                                    }}
-                                    className="brand-product-wr"
                                 >
                                     {prodItemList.map((res, pIdx) => {
                                         return (
                                             <SwiperSlide
                                                 key={`anchorBoxId_${pIdx}`}
+                                                id={`anchorBoxId_${pIdx}`}
                                             >
                                                 <Image
                                                     className={'w-full h-auto'}
@@ -74,6 +75,13 @@ export default function BrandMain() {
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
+                                                    priority={
+                                                        bIdx === 0
+                                                            ? true
+                                                            : bIdx === 1
+                                                              ? true
+                                                              : bIdx === 2
+                                                    }
                                                     alt={'...'}
                                                 />
                                             </SwiperSlide>

@@ -13,7 +13,10 @@ export default function HomeHotItem() {
                     <ul className={'prdList'}>
                         {hotItemList.map((res, idx) => {
                             return (
-                                <li key={idx} id={`anchorBoxId_${idx}`}>
+                                <li
+                                    key={`anchorBoxId_${idx}`}
+                                    id={`anchorBoxId_${idx}`}
+                                >
                                     <div className="thumbnail">
                                         <div className="prdImg">
                                             <Link href="#">

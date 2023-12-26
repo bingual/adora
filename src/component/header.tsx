@@ -73,8 +73,12 @@ export default function Header() {
                                     <span>할인</span>
                                 </Link>
                             </li>
-                            <li>
-                                <Link href="#">
+                            <li
+                                className={
+                                    pathname === '/recommend' ? 'on' : undefined
+                                }
+                            >
+                                <Link href={'/recommend'}>
                                     <span>#PICK</span>
                                 </Link>
                             </li>
@@ -95,7 +99,11 @@ export default function Header() {
                             {/*        <span>콜라보</span>*/}
                             {/*    </Link>*/}
                             {/*</li>*/}
-                            <li>
+                            <li
+                                className={
+                                    pathname === '/brand' ? 'on' : undefined
+                                }
+                            >
                                 <Link href={'/brand'}>
                                     <span>브랜드</span>
                                 </Link>
