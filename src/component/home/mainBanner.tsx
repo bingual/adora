@@ -1,10 +1,12 @@
 'use client';
-import Image from 'next/image';
-import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+
 import 'swiper/scss';
 import 'swiper/scss/pagination';
+
+import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function HomeMainBanner() {
@@ -29,10 +31,11 @@ export default function HomeMainBanner() {
                         <SwiperSlide key={idx}>
                             <Image
                                 className={'w-full h-auto'}
-                                src={`/home/mainBanner_${idx + 1}.jpg`}
+                                src={`/home/mainBanner/item_${idx + 1}.jpg`}
                                 width={0}
                                 height={0}
                                 sizes="100vw"
+                                priority={true}
                                 alt="..."
                             />
                         </SwiperSlide>

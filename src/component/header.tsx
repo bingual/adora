@@ -60,7 +60,7 @@ export default function Header() {
                         </ul>
                     </div>
                 </div>
-                {pathname === '/' && (
+                {[pathname === '/', pathname === '/brand'] && (
                     <div className="main-tab">
                         <ul>
                             <li className={pathname === '/' ? 'on' : undefined}>
@@ -96,7 +96,7 @@ export default function Header() {
                             {/*    </Link>*/}
                             {/*</li>*/}
                             <li>
-                                <Link href="#">
+                                <Link href={'/brand'}>
                                     <span>브랜드</span>
                                 </Link>
                             </li>

@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function HomeHotItem() {
     const [hotItemList, setHotItemList] = useState(new Array(12).fill(0));
@@ -19,10 +19,13 @@ export default function HomeHotItem() {
                                             <Link href="#">
                                                 <Image
                                                     className={'w-full h-auto'}
-                                                    src={'/home/hotItem_1.jpg'}
+                                                    src={`/home/hotItem/item_${
+                                                        idx + 1
+                                                    }.jpg`}
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
+                                                    priority={true}
                                                     alt={
                                                         '디태처블 울 블레이저 [블랙]'
                                                     }
@@ -32,9 +35,9 @@ export default function HomeHotItem() {
                                                         className={
                                                             'w-full h-auto'
                                                         }
-                                                        src={
-                                                            '/home/hotItem_1.jpg'
-                                                        }
+                                                        src={`/home/hotItem/item_${
+                                                            idx + 1
+                                                        }.jpg`}
                                                         width={0}
                                                         height={0}
                                                         sizes="100vw"

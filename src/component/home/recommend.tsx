@@ -1,12 +1,9 @@
 'use client';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 
-// import required modules
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -33,7 +30,6 @@ export default function HomeRecommend() {
                         spaceBetween={10}
                         loop={true}
                         freeMode={true}
-                        style={{ padding: 0 }}
                     >
                         {pickItemList.map((res, idx) => {
                             return (
@@ -46,12 +42,13 @@ export default function HomeRecommend() {
                                             <Link href={'#'}>
                                                 <Image
                                                     className={'w-full h-auto'}
-                                                    src={`/home/recommend_${
+                                                    src={`/home/recommend/item_${
                                                         idx + 1
                                                     }.jpg`}
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
+                                                    priority={true}
                                                     alt="..."
                                                 />
                                                 <div className={'over-bg'}>
@@ -59,7 +56,7 @@ export default function HomeRecommend() {
                                                         className={
                                                             'w-full h-auto'
                                                         }
-                                                        src={`/home/recommend_${
+                                                        src={`/home/recommend/item_${
                                                             idx + 1
                                                         }.jpg`}
                                                         width={0}
