@@ -65,7 +65,7 @@ button {
 }
 
 html {
-    @apply text-base;
+    @apply text-base/none;
     width: 100%;
     height: 100%;
 }
@@ -77,7 +77,7 @@ body {
 
 body,
 code {
-    @apply text-base;
+    @apply text-base/none;
     min-width: 320px;
     -webkit-text-size-adjust: none;
 }
@@ -143,7 +143,7 @@ code {
                         span {
                             @apply absolute text-center font-[600];
                             @apply bg-[#ff4000] dark:bg-gray-400;
-                            @apply text-xs max-sm:text-[9px]  text-white dark:text-black;
+                            @apply text-xs/none max-sm:text-[9px]  text-white dark:text-black;
                             @apply w-5 h-5 leading-5 max-sm:w-4 max-sm:h-4 max-sm:leading-4;
                             @apply right-0 bottom-[6px] max-sm:right-[-2px] max-sm:bottom-[4px];
                             border-radius: 50%;
@@ -164,7 +164,7 @@ code {
                 margin-right: 25px;
 
                 > a {
-                    @apply text-2xl max-sm:text-base text-[#858585] dark:text-gray-300;
+                    @apply text-2xl/none max-sm:text-base/none text-[#858585] dark:text-gray-300;
                     @apply h-[60px] leading-[60px] max-sm:h-[36px] max-sm:leading-[36px] max-sm:text-[16px];
                     font-weight: 400;
                     display: block;
@@ -186,7 +186,7 @@ code {
 }
 
 #footer {
-    @apply text-xs;
+    @apply text-xs/none;
     @apply border-t border-solid border-[#dedede] dark:border-gray-700;
     padding: 50px 5% 30px;
     box-sizing: border-box;
@@ -206,12 +206,12 @@ code {
         > div {
             float: left;
             p.tit {
-                @apply text-base text-black dark:text-white;
+                @apply text-base/none text-black dark:text-white;
                 font-weight: 500;
                 margin-bottom: 10px;
             }
             span {
-                @apply text-xs text-[#999] dark:text-gray-300;
+                @apply text-xs/none text-[#999] dark:text-gray-300;
                 line-height: 21px;
                 display: block;
             }
@@ -219,7 +219,7 @@ code {
         .footer_left {
             width: 60%;
             p.tit {
-                @apply text-base;
+                @apply text-base/none;
             }
         }
         .footer_right {
@@ -247,7 +247,7 @@ code {
         text-align: center;
         margin: 30px 0;
         a {
-            @apply text-2xl text-black dark:text-white;
+            @apply text-2xl/none text-black dark:text-white;
             margin: 0 6px;
         }
     }
@@ -301,7 +301,7 @@ code {
                 padding: 10px 0;
                 width: 100%;
                 p {
-                    @apply text-xs text-black dark:text-white;
+                    @apply text-xs/none text-black dark:text-white;
                     @apply mt-0;
                 }
                 img {
@@ -354,6 +354,20 @@ code {
                 }
             }
         }
+        .likeButton {
+            font-size: 0;
+            position: absolute;
+            right: 15px;
+            bottom: 5px;
+            button {
+                background-color: transparent;
+                border: 0;
+                outline: none;
+                img {
+                    width: 40px;
+                }
+            }
+        }
     }
     .description {
         margin: 0 4px !important;
@@ -362,7 +376,7 @@ code {
         text-align: left;
         .flex-wr {
             > a {
-                @apply text-base text-black dark:text-white;
+                @apply text-base/none text-black dark:text-white;
                 font-weight: 600;
                 margin: 0 0 8px;
                 display: inline-block;
@@ -376,7 +390,7 @@ code {
                     font-weight: 400;
                     line-height: 18px;
                     span {
-                        @apply text-base;
+                        @apply text-base/none;
                     }
                 }
             }
@@ -384,7 +398,7 @@ code {
                 margin-top: 8px;
                 position: relative;
                 p {
-                    @apply text-base;
+                    @apply text-base/none;
                     display: inline-block;
                     margin: 0 5px 5px 0;
                 }
@@ -419,11 +433,11 @@ code {
                     }
                     span {
                         span {
-                            @apply text-xs text-black dark:text-white;
+                            @apply text-xs/none text-black dark:text-white;
                             vertical-align: middle;
                         }
                         span::before {
-                            @apply text-base;
+                            @apply text-base/none;
                             content: '\ea11';
                             font-family: xeicon, serif !important;
                             vertical-align: middle;
@@ -438,9 +452,9 @@ code {
         .review_wrap {
             a {
                 > span {
-                    @apply text-xs text-black dark:text-white;
+                    @apply text-xs/none text-black dark:text-white;
                     i {
-                        @apply text-base;
+                        @apply text-base/none;
                         margin: -3px 2px 0 0;
                         vertical-align: middle;
                     }
@@ -459,7 +473,7 @@ code {
 }
 
 .btnNormal {
-    @apply text-xs text-[#222] dark:text-gray-200;
+    @apply text-xs/none text-[#222] dark:text-gray-200;
     @apply border border-solid border-[#dedede] bg-white dark:border-white dark:bg-black;
     min-width: 60px;
     display: inline-block;
@@ -484,7 +498,7 @@ code {
 .titleArea {
     padding: 0 15px;
     h2 {
-        @apply text-xl text-black dark:text-white;
+        @apply text-xl/none text-black dark:text-white;
         text-align: left;
         padding: 15px 0 0;
         box-sizing: border-box;
@@ -549,17 +563,17 @@ code {
         align-items: center;
         padding-bottom: 15px;
         h3 {
-            @apply text-xl dark:text-white;
+            @apply text-xl/none dark:text-white;
             font-weight: 700;
             line-height: 1;
             margin-right: auto;
             span {
-                @apply text-xs text-[#888] dark:text-gray-300;
+                @apply text-xs/none text-[#888] dark:text-gray-300;
                 font-weight: 300;
             }
         }
         a {
-            @apply text-xs;
+            @apply text-xs/none;
             @apply border-black dark:border-white;
             border-radius: 4px;
             padding: 4px 10px;
@@ -576,16 +590,16 @@ code {
             text-align: center;
             padding: 0 3%;
             p {
-                @apply text-base text-[#666] dark:text-gray-300;
+                @apply text-base/none text-[#666] dark:text-gray-300;
                 margin-bottom: 15px;
             }
             > a {
-                @apply text-3xl text-black dark:text-white;
+                @apply text-3xl/none text-black dark:text-white;
                 font-weight: 700;
             }
         }
         li ~ li::after {
-            @apply text-xs;
+            @apply text-xs/none;
             content: '\e93e';
             font-family: xeicon, serif !important;
             color: #c9c9c9;
@@ -603,7 +617,7 @@ code {
             padding: 15px 0;
             a,
             div {
-                @apply text-base text-black dark:text-gray-300;
+                @apply text-base/none text-black dark:text-gray-300;
                 display: block;
                 position: relative;
                 font-weight: 500;
@@ -655,7 +669,7 @@ code {
         background: #000;
         text-align: right;
         a {
-            @apply text-xl max-sm:text-base;
+            @apply text-xl/none max-sm:text-base/none;
             color: #fff;
             padding: 10px;
             box-sizing: border-box;
@@ -679,7 +693,7 @@ code {
         .ec-base-product {
             @apply bg-white dark:bg-gray-900;
             h1 {
-                @apply text-2xl text-black dark:text-white font-bold m-1.5;
+                @apply text-2xl/none text-black dark:text-white font-bold m-1.5;
                 padding: 0 25px;
                 box-sizing: border-box;
             }
@@ -695,21 +709,81 @@ code {
 }
 // home end
 
-// recommend
+// discount start
+.recommend-wr {
+    .main-product-03 {
+        h1 {
+            @apply text-xl/none text-black dark:text-white font-bold my-3.5;
+            line-height: 1;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+    }
+    .kkst-card-list {
+        padding: 0 15px;
+        box-sizing: border-box;
+        .prdList {
+            display: block;
+            padding: 0;
+            > li {
+                margin-bottom: 85px;
+                .sale-grid {
+                    display: grid;
+                    grid-template-columns: 120px auto;
+                    gap: 10px;
+                    .thumbnail {
+                        margin-bottom: 0 !important;
+                    }
+                    .description {
+                        position: relative;
+                        padding-top: 10px;
+                        box-sizing: border-box;
+                        margin: 0 !important;
+                        .flex-wr {
+                            .name a span {
+                                font-size: 16px !important;
+                                font-weight: 500 !important;
+                            }
+                            .price-wr {
+                                position: absolute;
+                                bottom: 10px;
+                                left: 0;
+                                width: 100%;
+                                p.rate {
+                                    position: absolute;
+                                    right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .sale-img {
+        margin-bottom: 10px;
+        img {
+            border-radius: 20px;
+        }
+    }
+}
+// discount end
+
+// recommend start
 .recommend2-wr {
     padding: 20px 0;
     .title {
         margin-bottom: 50px;
         padding: 0 15px;
         p {
-            @apply text-lg;
+            @apply text-lg/none;
             color: #ff4000;
             font-weight: 500;
             margin-bottom: 10px;
             line-height: 1;
         }
         h2 {
-            @apply text-2xl text-black dark:text-white;
+            @apply text-2xl/none text-black dark:text-white;
             font-weight: 700;
             padding-right: 20px;
             box-sizing: border-box;
@@ -720,7 +794,7 @@ code {
         margin-bottom: 80px;
         padding: 0 15px;
         h3 {
-            @apply text-xl font-bold text-black dark:text-white;
+            @apply text-xl/none font-bold text-black dark:text-white;
             position: relative;
             line-height: 1;
             margin-bottom: 14px;
@@ -734,7 +808,7 @@ code {
             .description {
                 .flex-wr {
                     a {
-                        @apply text-sm;
+                        @apply text-sm/none;
                     }
                 }
             }
@@ -743,7 +817,7 @@ code {
     .link {
         text-align: center;
         a {
-            @apply text-base text-black dark:text-white;
+            @apply text-base/none text-black dark:text-white;
             @apply border border-solid border-black dark:border-white;
             display: inline-block;
             padding: 10px;
@@ -754,12 +828,23 @@ code {
 }
 // recommend end
 
+// coming soon start
+.comingsoon-wr {
+    padding: 10px 0 30px;
+    > h1 {
+        @apply text-xl/none text-black dark:text-white font-bold my-3.5;
+        line-height: 1;
+        padding: 0 25px;
+    }
+}
+// coming soon end
+
 // brand start
 .brand-wr {
     .title-area {
         margin: 30px 0 20px;
         h2 {
-            @apply text-3xl max-sm:text-2xl text-black dark:text-white;
+            @apply text-3xl/none max-sm:text-2xl/none text-black dark:text-white;
             font-weight: 600;
             padding: 0 15px;
             box-sizing: border-box;
@@ -791,19 +876,19 @@ code {
                         box-sizing: border-box;
                         .brand-name {
                             h3 {
-                                @apply text-3xl max-sm:text-2xl text-black dark:text-white;
+                                @apply text-3xl/none max-sm:text-2xl/none text-black dark:text-white;
                                 font-weight: 600;
                                 line-height: 1;
                                 margin-bottom: 5px;
                             }
                             p {
-                                @apply text-xl max-sm:text-lg text-[#797979] dark:text-gray-300;
+                                @apply text-xl/none max-sm:text-lg/none text-[#797979] dark:text-gray-300;
                                 font-weight: 500;
                                 line-height: 1;
                             }
                         }
                         span::before {
-                            @apply text-3xl text-black dark:text-gray-300;
+                            @apply text-3xl/none text-black dark:text-gray-300;
                             position: absolute;
                             top: 50%;
                             right: 10px;
@@ -827,3 +912,35 @@ code {
     }
 }
 // brand end
+
+// ranking start
+// ranking end
+
+// like start
+.like-wr {
+    .tabs {
+        display: flex;
+        margin-bottom: 35px;
+        li {
+            @apply text-base/none text-[#ccc] dark:text-gray-700;
+            @apply border-b border-solid border-[#ccc] dark:border-gray-700;
+            display: inline-block;
+            cursor: pointer;
+            width: 50%;
+            text-align: center;
+            padding: 15px 0;
+            box-sizing: border-box;
+        }
+        li.current {
+            @apply text-black dark:text-white;
+            @apply border-b border-solid border-black dark:border-white;
+            font-weight: bold;
+        }
+    }
+    .empty {
+        @apply text-lg/none text-black dark:text-white;
+        text-align: center;
+        padding: 30px 0 30px;
+    }
+}
+// like end
