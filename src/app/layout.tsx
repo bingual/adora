@@ -5,12 +5,14 @@ import { ThemeModeScript } from 'flowbite-react';
 import Header from '@/component/header';
 import Navigation from '@/component/navigation';
 import Footer from '@/component/footer';
+import { usePathname } from 'next/navigation';
 
 export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
+    const pathname = usePathname();
     return (
         <>
             <SessionProvider>
@@ -23,7 +25,14 @@ export default function RootLayout({
                         <div className={'pc_mo-wr'}>
                             <div id={'mobile'}>
                                 <Header />
-                                <div id={'wrap'}>
+                                <div
+                                    id={'wrap'}
+                                    className={
+                                        pathname.startsWith('/auth')
+                                            ? 'min-h-screen'
+                                            : undefined
+                                    }
+                                >
                                     <div id={'container'}>{children}</div>
                                 </div>
                                 <Footer />

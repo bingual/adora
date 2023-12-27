@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 export default function HomeMainBanner() {
-    const [bannerItemList, setBannerItemList] = useState(new Array(3).fill(0));
+    const [bannerItemList, setBannerItemList] = useState(new Array(7).fill(0));
 
     return (
         <>

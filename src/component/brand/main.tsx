@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 export default function BrandMain() {
-    const [brandItemList, setBrandItemList] = useState(new Array(27).fill(0));
+    const [brandItemList, setBrandItemList] = useState(new Array(28).fill(0));
     const [prodItemList, setProdItemList] = useState(new Array(5).fill(0));
     return (
         <>

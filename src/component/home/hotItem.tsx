@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 export default function HomeHotItem() {
-    const [hotItemList, setHotItemList] = useState(new Array(12).fill(0));
+    const [hotItemList, setHotItemList] = useState(new Array(13).fill(0));
     return (
         <>
             <div className={'main-product-02'}>
@@ -50,6 +50,24 @@ export default function HomeHotItem() {
                                                     />
                                                 </div>
                                             </Link>
+                                        </div>
+                                        <div className="likeButton likePrd">
+                                            <button type="button">
+                                                <Image
+                                                    className={'w-full h-auto'}
+                                                    src={`/product/like.png`}
+                                                    width={0}
+                                                    height={0}
+                                                    sizes="100vw"
+                                                    priority={true}
+                                                    alt="..."
+                                                />
+                                            </button>
+                                            <span>
+                                                <span className="likePrdCount likePrdCount_856">
+                                                    13
+                                                </span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="description">

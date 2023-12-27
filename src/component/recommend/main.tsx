@@ -13,7 +13,7 @@ export default function RecommendMain() {
     const [recommendItemList, setRecommendItemList] = useState(
         new Array(12).fill(0),
     );
-    const [pickItemList, setPickItemList] = useState(new Array(5).fill(0));
+    const [pickItemList, setPickItemList] = useState(new Array(12).fill(0));
     return (
         <>
             <div className={'recommend2-wr'}>
@@ -26,9 +26,9 @@ export default function RecommendMain() {
                         <div key={`recommend_item_${rIdx}`} className={'item'}>
                             <h3>
                                 <Link href="#">
-                                    요즘 많이 신는
+                                    겨울 코디템
                                     <br />
-                                    겨울신발 TOP5
+                                    목도리 TOP12
                                 </Link>
                             </h3>
                             <Swiper
@@ -64,11 +64,11 @@ export default function RecommendMain() {
                                                             sizes="100vw"
                                                             alt="..."
                                                             priority={
-                                                                pIdx === 0
+                                                                rIdx === 0
                                                                     ? true
-                                                                    : pIdx === 1
+                                                                    : rIdx === 1
                                                                       ? true
-                                                                      : pIdx ===
+                                                                      : rIdx ===
                                                                         2
                                                             }
                                                         />
@@ -92,24 +92,56 @@ export default function RecommendMain() {
                                                         </div>
                                                     </Link>
                                                 </div>
+                                                <div className="likeButton likePrd">
+                                                    <button type="button">
+                                                        <Image
+                                                            className={
+                                                                'w-full h-auto'
+                                                            }
+                                                            src={`/product/like.png`}
+                                                            width={0}
+                                                            height={0}
+                                                            sizes="100vw"
+                                                            priority={true}
+                                                            alt="..."
+                                                        />
+                                                    </button>
+                                                    <span>
+                                                        <span className="likePrdCount likePrdCount_856">
+                                                            13
+                                                        </span>
+                                                    </span>
+                                                </div>
                                             </div>
                                             <div className={'description'}>
                                                 <div className={'flex-wr'}>
                                                     <Link href={'#'}>
-                                                        나이키
+                                                        모더먼트
                                                     </Link>
                                                     <div className={'name'}>
                                                         <Link href={'#'}>
                                                             <span>
-                                                                줌 보메로 5
-                                                                코블스톤 앤 플랫
-                                                                퓨터
+                                                                [UNISEX] 소프트
+                                                                터치 숏 머플러
+                                                                [베이지]
                                                             </span>
                                                         </Link>
                                                     </div>
-                                                    <div className={'price-wr'}>
-                                                        <p className={'price'}>
-                                                            상품링크 참조
+                                                    <div className="price-wr">
+                                                        <p className="rate">
+                                                            37%
+                                                        </p>
+                                                        <p className="price">
+                                                            <span className="front unit">
+                                                                ₩
+                                                            </span>
+                                                            16,900
+                                                        </p>
+                                                        <p className="origin_price">
+                                                            <span className="front unit">
+                                                                ₩
+                                                            </span>
+                                                            27,000
                                                         </p>
                                                     </div>
                                                     <div className="count">
@@ -125,11 +157,21 @@ export default function RecommendMain() {
                                                                     {/*</picture>*/}
                                                                     <span>
                                                                         <span className="likePrdCount likePrdCount_353">
-                                                                            9
+                                                                            13
                                                                         </span>
                                                                     </span>
                                                                 </button>
                                                             </div>
+                                                        </div>
+                                                        <div className="review_wrap">
+                                                            <Link href="#">
+                                                                <span className="alpha_module_count_container">
+                                                                    <i className="xi-message-o"></i>
+                                                                    <span className="alpha_module_count">
+                                                                        3
+                                                                    </span>
+                                                                </span>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </div>

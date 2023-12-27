@@ -6,6 +6,74 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
     const pathname = usePathname();
 
+    const mainTab = () => {
+        if (
+            pathname === '/' ||
+            pathname.startsWith('/discount') ||
+            pathname.startsWith('/recommend') ||
+            pathname.startsWith('/comingsoon') ||
+            pathname.startsWith('/brand')
+        ) {
+            return (
+                <div className="main-tab">
+                    <ul>
+                        <li className={pathname === '/' ? 'on' : undefined}>
+                            <Link href="/">
+                                <span>홈</span>
+                            </Link>
+                        </li>
+                        <li
+                            className={
+                                pathname === '/discount' ? 'on' : undefined
+                            }
+                        >
+                            <Link href={'/discount'}>
+                                <span>할인</span>
+                            </Link>
+                        </li>
+                        <li
+                            className={
+                                pathname === '/recommend' ? 'on' : undefined
+                            }
+                        >
+                            <Link href={'/recommend'}>
+                                <span>#PICK</span>
+                            </Link>
+                        </li>
+                        <li
+                            className={
+                                pathname === '/comingsoon' ? 'on' : undefined
+                            }
+                        >
+                            <Link href={'/comingsoon'}>
+                                <span>커밍순</span>
+                            </Link>
+                        </li>
+                        {/*<li>*/}
+                        {/*    <Link href="#">*/}
+                        {/*        <span className={'point'}>*/}
+                        {/*            BLACK FRIDAY*/}
+                        {/*        </span>*/}
+                        {/*    </Link>*/}
+                        {/*</li>*/}
+                        {/*<li>*/}
+                        {/*    <Link href="#">*/}
+                        {/*        <span>콜라보</span>*/}
+                        {/*    </Link>*/}
+                        {/*</li>*/}
+                        <li
+                            className={pathname === '/brand' ? 'on' : undefined}
+                        >
+                            <Link href={'/brand'}>
+                                <span>브랜드</span>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            );
+        }
+    };
+
     return (
         <>
             <header id={'header'} className={'fixed'}>
@@ -60,57 +128,7 @@ export default function Header() {
                         </ul>
                     </div>
                 </div>
-                {[pathname === '/', pathname === '/brand'] && (
-                    <div className="main-tab">
-                        <ul>
-                            <li className={pathname === '/' ? 'on' : undefined}>
-                                <Link href="/">
-                                    <span>홈</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                    <span>할인</span>
-                                </Link>
-                            </li>
-                            <li
-                                className={
-                                    pathname === '/recommend' ? 'on' : undefined
-                                }
-                            >
-                                <Link href={'/recommend'}>
-                                    <span>#PICK</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                    <span>커밍순</span>
-                                </Link>
-                            </li>
-                            {/*<li>*/}
-                            {/*    <Link href="#">*/}
-                            {/*        <span className={'point'}>*/}
-                            {/*            BLACK FRIDAY*/}
-                            {/*        </span>*/}
-                            {/*    </Link>*/}
-                            {/*</li>*/}
-                            {/*<li>*/}
-                            {/*    <Link href="#">*/}
-                            {/*        <span>콜라보</span>*/}
-                            {/*    </Link>*/}
-                            {/*</li>*/}
-                            <li
-                                className={
-                                    pathname === '/brand' ? 'on' : undefined
-                                }
-                            >
-                                <Link href={'/brand'}>
-                                    <span>브랜드</span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                )}
+                {mainTab()}
             </header>
         </>
     );
