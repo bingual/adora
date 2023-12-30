@@ -5,8 +5,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Header() {
     const pathname = usePathname();
-
-    const mainTab = () => {
+    const MainTab = () => {
         if (
             pathname === '/' ||
             pathname.startsWith('/discount') ||
@@ -128,7 +127,7 @@ export default function Header() {
                         </ul>
                     </div>
                 </div>
-                {mainTab()}
+                <MainTab />
             </header>
         </>
     );

@@ -1,10 +1,9 @@
-'use client';
-export default function Shopping() {
+import ShoppingMain from '@/component/shopping/main';
+
+export default async function Shopping() {
     return (
         <>
-            <div className="comingsoon-wr">
-                <h1>Ranking</h1>
-            </div>
+            <ShoppingMain />
         </>
     );
 }
