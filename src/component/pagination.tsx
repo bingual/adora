@@ -1,0 +1,83 @@
+'use client';
+import Pagination, { ReactJsPaginationProps } from 'react-js-pagination';
+import Image from 'next/image';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+
+export default function PaginationComponent({ count }: { count: number }) {
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    const page = Number(searchParams.get('page')) || 1;
+    const take = Number(searchParams.get('take')) || 12;
+
+    const handleOnChange: ReactJsPaginationProps['onChange'] = async (
+        page: number,
+    ) => {
+        router.push(`${pathname}?page=${page}&take=${take}`, {
+            scroll: true,
+        });
+    };
+
+    return (
+        <>
+            <div className={'ec-base-paginate'}>
+                <Pagination
+                    activePage={page} // 현재 페이지
+                    itemsCountPerPage={take} // 표시할 목록 개수
+                    totalItemsCount={count} // 전체 아이템 개수
+                    pageRangeDisplayed={5} // 페이지 번호를 몇개까지 표시할지
+                    onChange={handleOnChange} // 체인지 이벤트 발생시 실행할 내용
+                    prevPageText={
+                        <div className={'w-[33px]'}>
+                            <Image
+                                className={'w-full h-auto'}
+                                src={'/pagination/page_prev.png'}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                alt={'...'}
+                            />
+                        </div>
+                    }
+                    nextPageText={
+                        <div className={'w-[33px]'}>
+                            <Image
+                                className={'w-full h-auto'}
+                                src={'/pagination/page_next.png'}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                alt={'...'}
+                            />
+                        </div>
+                    }
+                    firstPageText={
+                        <div className={'w-[33px]'}>
+                            <Image
+                                className={'w-full h-auto'}
+                                src={'/pagination/page_first.png'}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                alt={'...'}
+                            />
+                        </div>
+                    }
+                    lastPageText={
+                        <div className={'w-[33px]'}>
+                            <Image
+                                className={'w-full h-auto'}
+                                src={'/pagination/page_last.png'}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                alt={'...'}
+                            />
+                        </div>
+                    }
+                />
+            </div>
+        </>
+    );
+}
