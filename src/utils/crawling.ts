@@ -135,7 +135,7 @@ const crawling = async (provider: number) => {
         };
         await brand();
         await browser.close();
-        return console.log('%c Crawling Completion!', completion);
+        console.log('%c Crawling Completion!', completion);
     } else if (provider === 2) {
         const shopping = async (
             cateNum: number,
@@ -321,7 +321,7 @@ const crawling = async (provider: number) => {
         }
 
         await browser.close();
-        return console.log('%c Crawling Completion!', completion);
+        console.log('%c Crawling Completion!', completion);
     } else {
         await browser.close();
         console.log('does not exist');
