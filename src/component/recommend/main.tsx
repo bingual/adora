@@ -63,14 +63,6 @@ export default function RecommendMain() {
                                                             height={0}
                                                             sizes="100vw"
                                                             alt="..."
-                                                            priority={
-                                                                rIdx === 0
-                                                                    ? true
-                                                                    : rIdx === 1
-                                                                      ? true
-                                                                      : rIdx ===
-                                                                        2
-                                                            }
                                                         />
                                                         <div
                                                             className={
@@ -87,6 +79,12 @@ export default function RecommendMain() {
                                                                 width={0}
                                                                 height={0}
                                                                 sizes="100vw"
+                                                                priority={
+                                                                    rIdx === 0
+                                                                        ? true
+                                                                        : rIdx ===
+                                                                          1
+                                                                }
                                                                 alt="..."
                                                             />
                                                         </div>
@@ -102,7 +100,11 @@ export default function RecommendMain() {
                                                             width={0}
                                                             height={0}
                                                             sizes="100vw"
-                                                            priority={true}
+                                                            priority={
+                                                                rIdx === 0
+                                                                    ? true
+                                                                    : rIdx === 1
+                                                            }
                                                             alt="..."
                                                         />
                                                     </button>

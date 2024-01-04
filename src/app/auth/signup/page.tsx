@@ -2,9 +2,9 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { confirmUsername, signup } from '@/server_action/auth/signup';
+import { confirmUsername, signup } from '@/server_action';
 import { useState } from 'react';
-import { NumberArg, SignupFormSchema, SignupFormTypes } from '@/types/type';
+import { SignupFormSchema, SignupFormTypes } from '@/types/type';
 
 export default function AuthSignup() {
     const {
@@ -28,7 +28,7 @@ export default function AuthSignup() {
     const [passwordErrorMessage, setPasswordErrorMessage] =
         useState('비밀번호가 일치하지 않습니다.');
 
-    const setErrors = (state: NumberArg) => {
+    const setErrors = (state: number) => {
         state === 0 &&
             setError('username', {
                 type: 'UQ_username',

@@ -6,11 +6,12 @@ import 'swiper/scss/pagination';
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { Prisma } from '@prisma/client';
+import { getBrandList } from '@/server_action';
 
-export default function BrandMain() {
-    const [brandItemList, setBrandItemList] = useState(new Array(28).fill(0));
-    const [prodItemList, setProdItemList] = useState(new Array(5).fill(0));
+type Brand = Prisma.PromiseReturnType<typeof getBrandList>;
+
+export default function BrandMain({ brandList }: { brandList: Brand }) {
     return (
         <>
             <div className={'brand-wr'}>
@@ -18,7 +19,7 @@ export default function BrandMain() {
                     <h2>BRAND</h2>
                 </div>
                 <div className={'brand-list-area'}>
-                    {brandItemList.map((res, bIdx) => {
+                    {brandList.map((res, bIdx) => {
                         return (
                             <div
                                 key={`brand-item_${bIdx}`}
@@ -30,9 +31,7 @@ export default function BrandMain() {
                                             <div className="brand-thum">
                                                 <Image
                                                     className={'w-full h-auto'}
-                                                    src={`/brand/brandThum/item_${
-                                                        bIdx + 1
-                                                    }.jpg`}
+                                                    src={res.thumbnail}
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
@@ -40,8 +39,6 @@ export default function BrandMain() {
                                                         bIdx === 0
                                                             ? true
                                                             : bIdx === 1
-                                                              ? true
-                                                              : bIdx === 2
                                                     }
                                                     alt={'...'}
                                                 />
@@ -49,8 +46,8 @@ export default function BrandMain() {
                                         </div>
                                         <div className="right-menu">
                                             <div className="brand-name">
-                                                <h3>메르고</h3>
-                                                <p>캐주얼ㆍ모던</p>
+                                                <h3>{res.brand_name}</h3>
+                                                <p>{res.description}</p>
                                             </div>
                                             <span />
                                         </div>
@@ -61,7 +58,7 @@ export default function BrandMain() {
                                     slidesPerView={3.15}
                                     spaceBetween={4}
                                 >
-                                    {prodItemList.map((res, pIdx) => {
+                                    {res.brand_groups.map((res, pIdx) => {
                                         return (
                                             <SwiperSlide
                                                 key={`anchorBoxId_${pIdx}`}
@@ -69,9 +66,7 @@ export default function BrandMain() {
                                             >
                                                 <Image
                                                     className={'w-full h-auto'}
-                                                    src={`/brand/prodThum/item_${
-                                                        pIdx + 1
-                                                    }.jpg`}
+                                                    src={res.thumbnail}
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
@@ -79,8 +74,6 @@ export default function BrandMain() {
                                                         bIdx === 0
                                                             ? true
                                                             : bIdx === 1
-                                                              ? true
-                                                              : bIdx === 2
                                                     }
                                                     alt={'...'}
                                                 />

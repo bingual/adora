@@ -28,7 +28,6 @@ export default function HomeHotItem() {
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
-                                                    priority={true}
                                                     alt={
                                                         '디태처블 울 블레이저 [블랙]'
                                                     }
@@ -59,7 +58,6 @@ export default function HomeHotItem() {
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
-                                                    priority={true}
                                                     alt="..."
                                                 />
                                             </button>

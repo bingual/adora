@@ -36,8 +36,6 @@ export default function DiscountMain() {
                                                             pIdx === 0
                                                                 ? true
                                                                 : pIdx === 1
-                                                                  ? true
-                                                                  : pIdx === 2
                                                         }
                                                         alt="..."
                                                     />
@@ -61,10 +59,7 @@ export default function DiscountMain() {
                                                                     pIdx === 0
                                                                         ? true
                                                                         : pIdx ===
-                                                                            1
-                                                                          ? true
-                                                                          : pIdx ===
-                                                                            2
+                                                                          1
                                                                 }
                                                                 alt="..."
                                                             />
