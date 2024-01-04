@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { Prisma } from '@prisma/client';
+import { getBrandList, getProductList } from '@/server_action';
 
 export const SignupFormSchema = z.object({
     username: z
@@ -61,3 +63,6 @@ const Props = z.object({
 export type SignupFormTypes = z.infer<typeof SignupFormSchema>;
 export type LoginFormTypes = z.infer<typeof LoginFormSchema>;
 export type Props = z.infer<typeof Props>;
+
+export type Product = Prisma.PromiseReturnType<typeof getProductList>;
+export type Brand = Prisma.PromiseReturnType<typeof getBrandList>;

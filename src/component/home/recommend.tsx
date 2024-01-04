@@ -4,13 +4,16 @@ import { Autoplay } from 'swiper/modules';
 
 import 'swiper/scss';
 import 'swiper/scss/pagination';
-
-import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { Product } from '@/types/type';
+import ProductList from '@/component/proudctList';
 
-export default function HomeRecommend() {
-    const [pickItemList, setPickItemList] = useState(new Array(12).fill(0));
+export default function HomeRecommend({
+    productData,
+}: {
+    productData: Product;
+}) {
+    const { productList, productCount } = productData;
     return (
         <>
             <div className={'recommend2-wr'}>
@@ -22,7 +25,7 @@ export default function HomeRecommend() {
                         <Link href="#">
                             겨울 코디템
                             <br />
-                            목도리 TOP12
+                            목도리 TOP{productCount}
                         </Link>
                     </h3>
                     <Swiper
@@ -37,119 +40,10 @@ export default function HomeRecommend() {
                         loop={true}
                         freeMode={true}
                     >
-                        {pickItemList.map((res, idx) => {
+                        {productList.map((prod, pIdx) => {
                             return (
-                                <SwiperSlide
-                                    id={`anchorBoxId_${idx}`}
-                                    key={`anchorBoxId_${idx}`}
-                                >
-                                    <div className="thumbnail">
-                                        <div className="prdImg">
-                                            <Link href={'#'}>
-                                                <Image
-                                                    className={'w-full h-auto'}
-                                                    src={`/home/recommend/item_${
-                                                        idx + 1
-                                                    }.jpg`}
-                                                    width={0}
-                                                    height={0}
-                                                    sizes="100vw"
-                                                    alt="..."
-                                                    priority={true}
-                                                />
-                                                <div className={'over-bg'}>
-                                                    <Image
-                                                        className={
-                                                            'w-full h-auto'
-                                                        }
-                                                        src={`/home/recommend/item_${
-                                                            idx + 1
-                                                        }.jpg`}
-                                                        width={0}
-                                                        height={0}
-                                                        sizes="100vw"
-                                                        alt="..."
-                                                    />
-                                                </div>
-                                            </Link>
-                                        </div>
-                                        <div className="likeButton likePrd">
-                                            <button type="button">
-                                                <Image
-                                                    className={'w-full h-auto'}
-                                                    src={`/product/like.png`}
-                                                    width={0}
-                                                    height={0}
-                                                    sizes="100vw"
-                                                    priority={true}
-                                                    alt="..."
-                                                />
-                                            </button>
-                                            <span>
-                                                <span className="likePrdCount likePrdCount_856">
-                                                    13
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className={'description'}>
-                                        <div className={'flex-wr'}>
-                                            <Link href={'#'}>모더먼트</Link>
-                                            <div className={'name'}>
-                                                <Link href={'#'}>
-                                                    <span>
-                                                        [UNISEX] 소프트 터치 숏
-                                                        머플러 [베이지]
-                                                    </span>
-                                                </Link>
-                                            </div>
-                                            <div className="price-wr">
-                                                <p className="rate">37%</p>
-                                                <p className="price">
-                                                    <span className="front unit">
-                                                        ₩
-                                                    </span>
-                                                    16,900
-                                                </p>
-                                                <p className="origin_price">
-                                                    <span className="front unit">
-                                                        ₩
-                                                    </span>
-                                                    27,000
-                                                </p>
-                                            </div>
-                                            <div className="count">
-                                                <div className="like_wrap">
-                                                    <div className="likeButton likePrd likePrd_353">
-                                                        <button type="button">
-                                                            {/*<picture>*/}
-                                                            {/*    <img*/}
-                                                            {/*        src="/web/upload/icon_202311301421409400.png"*/}
-                                                            {/*        className="likePrdIcon"*/}
-                                                            {/*        alt="좋아요 등록 전"*/}
-                                                            {/*    />*/}
-                                                            {/*</picture>*/}
-                                                            <span>
-                                                                <span className="likePrdCount likePrdCount_353">
-                                                                    13
-                                                                </span>
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div className="review_wrap">
-                                                    <Link href="#">
-                                                        <span className="alpha_module_count_container">
-                                                            <i className="xi-message-o"></i>
-                                                            <span className="alpha_module_count">
-                                                                3
-                                                            </span>
-                                                        </span>
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <SwiperSlide key={`anchorBoxId_${prod.idx}`}>
+                                    <ProductList prod={prod} />
                                 </SwiperSlide>
                             );
                         })}

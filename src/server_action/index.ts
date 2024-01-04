@@ -48,8 +48,17 @@ export const getBrandList = async () => {
 export const getProductList = async (
     page: number,
     take: number,
-    search: string,
+    option: {
+        brand_name?: string;
+        product_name?: string;
+        category?: string;
+        stock_quantity?: number;
+        limit?: number;
+    },
 ) => {
+    const { brand_name, product_name, category, stock_quantity, limit } =
+        option;
+
     const [productList, productCount] = await Promise.all([
         db.product.findMany({
             take: Number(take),
@@ -58,16 +67,53 @@ export const getProductList = async (
                 product_name: 'asc',
             },
             where: {
-                category: {
-                    contains: search,
-                },
+                ...(brand_name && {
+                    brand_name: {
+                        contains: brand_name,
+                    },
+                }),
+                ...(product_name && {
+                    product_name: {
+                        contains: product_name,
+                    },
+                }),
+                ...(category && {
+                    category: {
+                        contains: category,
+                    },
+                }),
+                ...(stock_quantity && {
+                    stock_quantity: {
+                        gte: stock_quantity,
+                    },
+                }),
             },
         }),
         db.product.count({
+            ...(limit && {
+                take: limit,
+            }),
             where: {
-                category: {
-                    contains: search,
-                },
+                ...(brand_name && {
+                    brand_name: {
+                        contains: brand_name,
+                    },
+                }),
+                ...(product_name && {
+                    product_name: {
+                        contains: product_name,
+                    },
+                }),
+                ...(category && {
+                    category: {
+                        contains: category,
+                    },
+                }),
+                ...(stock_quantity && {
+                    stock_quantity: {
+                        gte: stock_quantity,
+                    },
+                }),
             },
         }),
     ]);

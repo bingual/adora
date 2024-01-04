@@ -6,10 +6,7 @@ import 'swiper/scss/pagination';
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Prisma } from '@prisma/client';
-import { getBrandList } from '@/server_action';
-
-type Brand = Prisma.PromiseReturnType<typeof getBrandList>;
+import { Brand } from '@/types/type';
 
 export default function BrandMain({ brandList }: { brandList: Brand }) {
     return (
@@ -35,11 +32,6 @@ export default function BrandMain({ brandList }: { brandList: Brand }) {
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
-                                                    priority={
-                                                        bIdx === 0
-                                                            ? true
-                                                            : bIdx === 1
-                                                    }
                                                     alt={'...'}
                                                 />
                                             </div>
@@ -70,11 +62,6 @@ export default function BrandMain({ brandList }: { brandList: Brand }) {
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
-                                                    priority={
-                                                        bIdx === 0
-                                                            ? true
-                                                            : bIdx === 1
-                                                    }
                                                     alt={'...'}
                                                 />
                                             </SwiperSlide>

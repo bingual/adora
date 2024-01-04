@@ -720,11 +720,11 @@ img {
                 padding: 0 25px;
                 box-sizing: border-box;
             }
-            ul.prdList {
-                li {
+            div.prdList {
+                div {
                     vertical-align: top;
                 }
-                li[id*='anchorBoxId_'] {
+                div[id*='anchorBoxId_'] {
                 }
             }
         }
@@ -748,7 +748,7 @@ img {
         .prdList {
             display: block;
             padding: 0;
-            > li {
+            > div {
                 margin-bottom: 85px;
                 .sale-grid {
                     @apply grid-cols-[120px_minmax(0px,_1fr)] max-sm:grid-cols-[83px_minmax(0,_1fr)];

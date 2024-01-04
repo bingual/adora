@@ -1,7 +1,8 @@
 'use client';
-import LikeMain from '@/component/like/main';
+import LikeMain from '@/component/like';
+import { Props } from '@/types/type';
 
-export default function Like() {
+export default function Like({ params, searchParams }: Props) {
     return (
         <>
             <LikeMain />

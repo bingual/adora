@@ -1,4 +1,6 @@
-export default async function ComingSoon() {
+import { Props } from '@/types/type';
+
+export default async function ComingSoon({ params, searchParams }: Props) {
     return (
         <>
             <div className="comingsoon-wr">

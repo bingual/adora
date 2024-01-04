@@ -13,10 +13,10 @@ export default function DiscountMain() {
                     <div>
                         <div className={'ec-base-product kkst-card-list'}>
                             <h1>ON SALE</h1>
-                            <ul className={'prdList'}>
+                            <div className={'prdList'}>
                                 {prodItemList.map((res, pIdx) => {
                                     return (
-                                        <li
+                                        <div
                                             key={`anchorBoxId_${pIdx}`}
                                             id={`anchorBoxId_${pIdx}`}
                                         >
@@ -32,11 +32,6 @@ export default function DiscountMain() {
                                                         width={0}
                                                         height={0}
                                                         sizes="100vw"
-                                                        priority={
-                                                            pIdx === 0
-                                                                ? true
-                                                                : pIdx === 1
-                                                        }
                                                         alt="..."
                                                     />
                                                 </Link>
@@ -55,12 +50,6 @@ export default function DiscountMain() {
                                                                 width={0}
                                                                 height={0}
                                                                 sizes="100vw"
-                                                                priority={
-                                                                    pIdx === 0
-                                                                        ? true
-                                                                        : pIdx ===
-                                                                          1
-                                                                }
                                                                 alt="..."
                                                             />
                                                             <div
@@ -119,10 +108,10 @@ export default function DiscountMain() {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </div>
                                     );
                                 })}
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
