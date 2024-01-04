@@ -1,11 +1,16 @@
-import db from '@/utils/db';
 import moment from 'moment-timezone';
 import puppeteer from 'puppeteer';
 import fs from 'fs';
 import imgDownload from 'image-downloader';
 import path from 'path';
+import db from '@/utils/db';
+import readline from 'readline';
 
-// 편의성 개선은 나중에
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
 const crawling = async (provider: number) => {
     const browser = await puppeteer.launch({
         headless: 'new',
@@ -130,11 +135,9 @@ const crawling = async (provider: number) => {
         };
         await brand();
         await browser.close();
-        console.log('%c Crawling Completion!', completion);
-    }
-
-    if (provider === 2) {
-        const shoppingProduct = async (
+        return console.log('%c Crawling Completion!', completion);
+    } else if (provider === 2) {
+        const shopping = async (
             cateNum: number,
             maxPageNum: number,
             cate: string,
@@ -314,11 +317,23 @@ const crawling = async (provider: number) => {
                 `%c Overall Progress [${idx + 1}/${shoppingCase.length}]`,
                 progress,
             );
-            await shoppingProduct(cate_no, maxPageNum, cate);
+            await shopping(cate_no, maxPageNum, cate);
         }
 
         await browser.close();
-        console.log('%c Crawling Completion!', completion);
+        return console.log('%c Crawling Completion!', completion);
+    } else {
+        await browser.close();
+        console.log('does not exist');
     }
 };
-crawling(2);
+
+const selector = {
+    brand: 1,
+    shopping: 2,
+};
+
+rl.question(`${JSON.stringify(selector)} choose a number : `, (answer) => {
+    crawling(Number(answer));
+    rl.close();
+});
