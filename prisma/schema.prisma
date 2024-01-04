@@ -2,31 +2,65 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "mysql"
-    url      = env("DATABASE_URL")
-    // directUrl = env("DIRECT_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 enum Provider {
-    Credentials
-    kakao
-    naver
+  Credentials
+  kakao
+  naver
 }
 
 model User {
-    idx         Int      @id @default(autoincrement())
-    username    String   @unique @db.Char(50)
-    password    String   @db.Char(100)
-    name        String   @db.Char(15)
-    email       String   @db.Char(50)
-    contact     String?  @db.Char(13)
-    avatar      String?
-    provider    Provider @default(Credentials)
-    login_level Int      @default(1)
-    created_at  DateTime @default(dbgenerated("NOW()")) @db.DateTime
-    updated_at  DateTime @default(dbgenerated("NOW() ON UPDATE NOW()")) @db.DateTime
+  idx         Int      @id @default(autoincrement())
+  username    String   @unique @db.Char(50)
+  password    String   @db.Char(100)
+  name        String   @db.Char(15)
+  email       String   @db.Char(50)
+  contact     String?  @db.Char(13)
+  avatar      String?
+  provider    Provider @default(Credentials)
+  login_level Int      @default(1)
+  created_at  DateTime @default(now()) @db.Timestamptz()
+  updated_at  DateTime @updatedAt @db.Timestamp()
+}
+
+model Brand {
+  idx          Int           @id @default(autoincrement())
+  brand_name   String        @unique
+  description  String
+  thumbnail    String
+  created_at   DateTime      @default(now()) @db.Timestamptz()
+  updated_at   DateTime      @updatedAt @db.Timestamp()
+  Products     Product[]     @relation("brand:product")
+  brand_groups Brand_group[] @relation("brand:brand_group")
+}
+
+model Brand_group {
+  idx        Int      @id @default(autoincrement())
+  brand_name String
+  thumbnail  String
+  created_at DateTime @default(now()) @db.Timestamptz()
+  brand      Brand    @relation("brand:brand_group", fields: [brand_name], references: [brand_name], onDelete: Cascade)
+}
+
+model Product {
+  idx            Int      @id @default(autoincrement())
+  brand_name     String
+  product_name   String
+  off_rate       Int      @default(0)
+  price          Int      @default(0)
+  origin_price   Int      @default(0)
+  thumbnail      String
+  category       String?
+  stock_quantity Int      @default(0)
+  views          Int      @default(0)
+  created_at     DateTime @default(now()) @db.Timestamptz()
+  updated_at     DateTime @updatedAt @db.Timestamp()
+  Brand          Brand    @relation("brand:product", fields: [brand_name], references: [brand_name], onDelete: Cascade)
 }
