@@ -5,7 +5,6 @@ import { Session } from 'next-auth';
 import { JWT } from 'next-auth/jwt';
 import { Provider } from '@prisma/client';
 import db from '@/utils/db';
-import { StringArg } from '@/types/type';
 import bcrypt from 'bcrypt';
 
 export const authOptions = {
@@ -90,8 +89,7 @@ export const authOptions = {
                     email,
                     name,
                     picture,
-                }: { email: StringArg; name: StringArg; picture: StringArg } =
-                    token;
+                }: { email: string; name: string; picture: string } = token;
 
                 const exUser = await db.user.findFirst({
                     select: {
@@ -138,11 +136,11 @@ export const authOptions = {
                     },
                 }: {
                     response: {
-                        profile_image: StringArg;
-                        email: StringArg;
-                        mobile: StringArg;
-                        mobile_e164: StringArg;
-                        name: StringArg;
+                        profile_image: string;
+                        email: string;
+                        mobile: string;
+                        mobile_e164: string;
+                        name: string;
                     };
                 } = profile;
 
