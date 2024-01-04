@@ -114,7 +114,6 @@ const crawling = async (provider: number) => {
                         dest: prodDir,
                     });
                 }
-                console.clear();
                 console.log(
                     `%c Crawling in Progress... [${idx + 1}/${els.length}]`,
                     progress,
@@ -263,7 +262,6 @@ const crawling = async (provider: number) => {
                         dest: prodDir,
                     });
                 }
-                console.clear();
                 console.log(
                     `%c Crawling in Progress... [${i}/${maxPageNum}]`,
                     progress,
@@ -312,16 +310,15 @@ const crawling = async (provider: number) => {
             idx,
             { cate_no, maxPageNum, cate },
         ] of shoppingCase.entries()) {
-            await shoppingProduct(cate_no, maxPageNum, cate);
-            console.clear();
             console.log(
                 `%c Overall Progress [${idx + 1}/${shoppingCase.length}]`,
                 progress,
             );
+            await shoppingProduct(cate_no, maxPageNum, cate);
         }
 
         await browser.close();
         console.log('%c Crawling Completion!', completion);
     }
 };
-crawling(1);
+crawling(2);
