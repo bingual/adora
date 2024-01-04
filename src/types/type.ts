@@ -1,7 +1,5 @@
 import { z } from 'zod';
 
-export const NumberArg = z.number();
-export const StringArg = z.string();
 export const SignupFormSchema = z.object({
     username: z
         .string()
@@ -45,12 +43,21 @@ export const SignupFormSchema = z.object({
         .max(50, { message: '50자리 이하로 입력해주세요.' })
         .trim(),
 });
+
 export const LoginFormSchema = z.object({
     username: z.string().trim(),
     password: z.string().trim(),
 });
 
-export type NumberArg = z.infer<typeof NumberArg>;
-export type StringArg = z.infer<typeof StringArg>;
+const Props = z.object({
+    params: z.object({
+        slug: z.string(),
+    }),
+    searchParams: z.record(
+        z.union([z.string(), z.array(z.string())]).or(z.undefined()),
+    ),
+});
+
 export type SignupFormTypes = z.infer<typeof SignupFormSchema>;
 export type LoginFormTypes = z.infer<typeof LoginFormSchema>;
+export type Props = z.infer<typeof Props>;
