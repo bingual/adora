@@ -186,17 +186,21 @@ export default function ShoppingMain({
                                         </span>
                                     </div>
                                     {res.stock_quantity === 0 && (
-                                        <Image
-                                            className={'w-full h-auto'}
-                                            src={'/product/sold_out.jpg'}
-                                            width={0}
-                                            height={0}
-                                            sizes="100vw"
-                                            priority={
-                                                hIdx === 1 ? true : hIdx === 2
-                                            }
-                                            alt={'...'}
-                                        />
+                                        <div className={'sold-out-ico'}>
+                                            <Image
+                                                className={'w-full h-auto'}
+                                                src={'/product/sold_out.jpg'}
+                                                width={0}
+                                                height={0}
+                                                sizes="100vw"
+                                                priority={
+                                                    hIdx === 1
+                                                        ? true
+                                                        : hIdx === 2
+                                                }
+                                                alt={'...'}
+                                            />
+                                        </div>
                                     )}
                                 </div>
                                 <div className="description">
