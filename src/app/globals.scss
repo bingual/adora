@@ -926,6 +926,92 @@ img {
         }
     }
 }
+.brand-detail-wr {
+    .product-head-category {
+        .titleArea {
+            position: relative;
+            border-bottom: 0;
+            padding: 0;
+            h2 {
+                @apply text-lg/none text-black dark:text-white;
+                padding: 15px 15px 0;
+                line-height: 35px;
+                text-align: left;
+                box-sizing: border-box;
+                font-weight: 500;
+                margin: 0 0 15px;
+            }
+        }
+        .menuCategory {
+            @apply text-sm/none;
+            padding: 0 15px;
+            box-sizing: border-box;
+            li {
+                display: inline-block;
+                margin: 0 8px 5px 0;
+                a {
+                    @apply text-black dark:text-white;
+                    text-decoration: none;
+                }
+            }
+            li.selected {
+                font-weight: 800;
+            }
+        }
+    }
+    .product-menu {
+        padding: 0;
+        .prdCount {
+            @apply text-sm/none text-[#7a7a7a] dark:text-gray-300;
+            float: left;
+            line-height: 40px;
+            padding-left: 15px;
+        }
+        .sort {
+            float: right;
+            margin-right: 5px;
+            p {
+                @apply text-sm/none text-black dark:text-white;
+                line-height: 40px;
+                text-align: center;
+                width: 91px;
+                span {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                i {
+                    margin-left: 8px;
+                    transition: all 0.3s;
+                    font-size: 10px;
+                    vertical-align: middle;
+                }
+            }
+            p.on {
+                i {
+                    transform: rotate(180deg);
+                }
+            }
+            ul {
+                @apply border border-solid border-[#dedede] dark:border-gray-700;
+                position: absolute;
+                top: 160px;
+                right: 10px;
+                z-index: 10;
+                box-sizing: border-box;
+                li {
+                    @apply text-xs/none text-black dark:text-white;
+                    @apply bg-white dark:bg-gray-900;
+                    width: 91px;
+                    line-height: 30px;
+                    text-align: center;
+                    a {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
 // brand end
 
 // ranking start
@@ -1107,17 +1193,19 @@ ul.pagination {
         height: 23px;
         margin: 0 3px;
         a {
-            @apply text-sm/none;
+            @apply text-sm/none text-[#939393] dark:text-gray-300;
+            @apply bg-white dark:bg-gray-900;
             display: block;
             width: 33px;
             line-height: 33px;
             padding: 0 !important;
             font-weight: bold;
-            color: #939393;
-            background: #fff;
             opacity: 0.4;
             transition: all 0.4s;
             border: none !important;
+            img {
+                @apply dark:invert-[20];
+            }
         }
         a:hover {
             opacity: 1;
@@ -1126,8 +1214,8 @@ ul.pagination {
 
     li.active {
         a {
+            @apply text-black dark:text-white;
             padding-bottom: 6px;
-            color: #000;
             opacity: 1 !important;
         }
     }
