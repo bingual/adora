@@ -35,10 +35,8 @@ yarn-error.log*
 # ide
 .idea
 
-# test
-test.ts
-test.tsx
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+test.ts
+/src/app/test/
