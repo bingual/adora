@@ -34,10 +34,14 @@ export const confirmUsername = async (username: string) => {
     }));
 };
 
-export const getBrandList = async () => {
+export const getBrandList = async (sort?: boolean) => {
     return db.brand.findMany({
         orderBy: {
-            idx: 'asc',
+            ...(sort
+                ? {
+                      brand_name: 'asc',
+                  }
+                : { idx: 'asc' }),
         },
         include: {
             brand_groups: true,
@@ -45,10 +49,65 @@ export const getBrandList = async () => {
     });
 };
 
+export const getBrandDetail = async (
+    page: number,
+    take: number,
+    idx?: number,
+    sort?: number,
+) => {
+    const [productList, productCount] = await Promise.all([
+        db.product.findMany({
+            take: take,
+            skip: take * (page - 1),
+            where: {
+                ...(idx && {
+                    brand: {
+                        idx: idx,
+                    },
+                }),
+            },
+            orderBy: {
+                ...(sort === 0 && {
+                    idx: 'asc',
+                }),
+                ...(sort === 1 && {
+                    product_name: 'asc',
+                }),
+                ...(sort === 2 && {
+                    price: 'asc',
+                }),
+                ...(sort === 3 && {
+                    price: 'desc',
+                }),
+                ...(sort === 4 && {
+                    brand_name: 'asc',
+                }),
+                ...(sort === 5 && {
+                    views: 'asc',
+                }),
+            },
+            include: {
+                brand: true,
+            },
+        }),
+        db.product.count({
+            where: {
+                ...(idx && {
+                    brand: {
+                        idx: idx,
+                    },
+                }),
+            },
+        }),
+    ]);
+
+    return { productList, productCount };
+};
+
 export const getProductList = async (
     page: number,
     take: number,
-    option: {
+    option?: {
         brand_name?: string;
         product_name?: string;
         category?: string;
@@ -56,13 +115,14 @@ export const getProductList = async (
         limit?: number;
     },
 ) => {
-    const { brand_name, product_name, category, stock_quantity, limit } =
-        option;
+    const { brand_name, product_name, category, stock_quantity, limit } = {
+        ...option,
+    };
 
     const [productList, productCount] = await Promise.all([
         db.product.findMany({
-            take: Number(take),
-            skip: Number(take) * (Number(page) - 1),
+            take: take,
+            skip: take * (page - 1),
             orderBy: {
                 product_name: 'asc',
             },

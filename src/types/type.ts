@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { Prisma } from '@prisma/client';
-import { getBrandList, getProductList } from '@/server_action';
+import { getBrandDetail, getBrandList, getProductList } from '@/server_action';
 
 export const SignupFormSchema = z.object({
     username: z
@@ -53,7 +53,7 @@ export const LoginFormSchema = z.object({
 
 const Props = z.object({
     params: z.object({
-        slug: z.string(),
+        idx: z.string(),
     }),
     searchParams: z.record(
         z.union([z.string(), z.array(z.string())]).or(z.undefined()),
@@ -64,5 +64,6 @@ export type SignupFormTypes = z.infer<typeof SignupFormSchema>;
 export type LoginFormTypes = z.infer<typeof LoginFormSchema>;
 export type Props = z.infer<typeof Props>;
 
-export type Product = Prisma.PromiseReturnType<typeof getProductList>;
-export type Brand = Prisma.PromiseReturnType<typeof getBrandList>;
+export type ProductListTypes = Prisma.PromiseReturnType<typeof getProductList>;
+export type BrandListTypes = Prisma.PromiseReturnType<typeof getBrandList>;
+export type BrandDetailTypes = Prisma.PromiseReturnType<typeof getBrandDetail>;
