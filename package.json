@@ -19,6 +19,8 @@
     "@types/bcrypt": "^5.0.2",
     "@types/lodash": "^4.14.202",
     "@types/react-js-pagination": "^3.0.7",
+    "@vercel/analytics": "^1.1.1",
+    "@vercel/speed-insights": "^1.0.2",
     "axios": "^1.6.4",
     "bcrypt": "^5.1.1",
     "flowbite": "^2.2.1",
