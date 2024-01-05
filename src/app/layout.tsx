@@ -6,6 +6,8 @@ import Header from '@/component/header';
 import Navigation from '@/component/navigation';
 import Footer from '@/component/footer';
 import { usePathname } from 'next/navigation';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export default function RootLayout({
     children,
@@ -33,7 +35,15 @@ export default function RootLayout({
                                             : undefined
                                     }
                                 >
-                                    <div id={'container'}>{children}</div>
+                                    <div id={'container'}>
+                                        {
+                                            <>
+                                                {children}
+                                                <Analytics />
+                                                <SpeedInsights />
+                                            </>
+                                        }
+                                    </div>
                                 </div>
                                 <Footer />
                                 <Navigation />
