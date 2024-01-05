@@ -16,6 +16,10 @@ export default async function Shopping({ params, searchParams }: Props) {
         category: String(cate_no),
     });
 
+    if (!shoppingData.productCount) {
+        return notFound();
+    }
+
     return (
         <>
             <div className="shopping-wr">
