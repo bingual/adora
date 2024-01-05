@@ -26,12 +26,12 @@ export default function HomeMainBanner() {
                 }}
                 loop={true}
             >
-                {bannerItemList.map((res, idx) => {
+                {bannerItemList.map((res, bIdx) => {
                     return (
-                        <SwiperSlide key={`main-slide_${idx}`}>
+                        <SwiperSlide key={bIdx}>
                             <Image
                                 className={'w-full h-auto'}
-                                src={`/home/mainBanner/item_${idx + 1}.jpg`}
+                                src={`/home/mainBanner/item_${bIdx + 1}.jpg`}
                                 width={0}
                                 height={0}
                                 sizes="100vw"

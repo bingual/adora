@@ -6,21 +6,19 @@ import 'swiper/scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { Brand, Product } from '@/types/type';
+import { BrandListTypes, ProductListTypes } from '@/types/type';
 import ProductList from '@/component/proudctList';
 
 export default function ShoppingComp({
     brandList,
     productData,
 }: {
-    productData: Product;
-    brandList: Brand;
+    productData: ProductListTypes;
+    brandList: BrandListTypes;
 }) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    const page = Number(searchParams.get('page')) || 1;
-    const take = Number(searchParams.get('take')) || 12;
     const cate_no = searchParams.get('cate_no');
 
     const { productList } = productData;
@@ -37,22 +35,22 @@ export default function ShoppingComp({
                 </div>
                 <Swiper slidesPerView={4.2} spaceBetween={36}>
                     {brandList.length > 0 &&
-                        brandList.map((res, bIdx) => {
+                        brandList.map((brand, bIdx) => {
                             return (
-                                <SwiperSlide key={`brand-swiper-wr_${bIdx}`}>
+                                <SwiperSlide key={bIdx}>
                                     <Link href={'#'}>
                                         <div className="img-wr">
                                             <Image
                                                 className={'w-full h-auto'}
-                                                src={res.thumbnail}
+                                                src={brand.thumbnail}
                                                 width={0}
                                                 height={0}
                                                 sizes="100vw"
-                                                alt={res.brand_name}
+                                                alt={brand.brand_name}
                                             />
                                         </div>
                                         <div className="text-wr">
-                                            <p>{res.brand_name}</p>
+                                            <p>{brand.brand_name}</p>
                                         </div>
                                     </Link>
                                 </SwiperSlide>
@@ -121,12 +119,7 @@ export default function ShoppingComp({
                 <div className={'prdList'}>
                     {productList.length > 0 &&
                         productList.map((prod, pIdx) => {
-                            return (
-                                <ProductList
-                                    key={`anchorBoxId_${pIdx}`}
-                                    prod={prod}
-                                />
-                            );
+                            return <ProductList key={pIdx} prod={prod} />;
                         })}
                 </div>
             </div>

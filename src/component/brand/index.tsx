@@ -6,9 +6,13 @@ import 'swiper/scss/pagination';
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Brand } from '@/types/type';
+import { BrandListTypes } from '@/types/type';
 
-export default function BrandComp({ brandList }: { brandList: Brand }) {
+export default function BrandComp({
+    brandList,
+}: {
+    brandList: BrandListTypes;
+}) {
     return (
         <>
             <div className={'brand-wr'}>
@@ -16,19 +20,16 @@ export default function BrandComp({ brandList }: { brandList: Brand }) {
                     <h2>BRAND</h2>
                 </div>
                 <div className={'brand-list-area'}>
-                    {brandList.map((res, bIdx) => {
+                    {brandList.map((brand, bIdx) => {
                         return (
-                            <div
-                                key={`brand-item_${bIdx}`}
-                                className={'brand-item'}
-                            >
+                            <div key={bIdx} className={'brand-item'}>
                                 <div className={'brand-title'}>
-                                    <Link href={'#'}>
+                                    <Link href={`/brand/product/${brand.idx}`}>
                                         <div className="left-area">
                                             <div className="brand-thum">
                                                 <Image
                                                     className={'w-full h-auto'}
-                                                    src={res.thumbnail}
+                                                    src={brand.thumbnail}
                                                     width={0}
                                                     height={0}
                                                     sizes="100vw"
@@ -38,8 +39,8 @@ export default function BrandComp({ brandList }: { brandList: Brand }) {
                                         </div>
                                         <div className="right-menu">
                                             <div className="brand-name">
-                                                <h3>{res.brand_name}</h3>
-                                                <p>{res.description}</p>
+                                                <h3>{brand.brand_name}</h3>
+                                                <p>{brand.description}</p>
                                             </div>
                                             <span />
                                         </div>
@@ -50,23 +51,26 @@ export default function BrandComp({ brandList }: { brandList: Brand }) {
                                     slidesPerView={3.15}
                                     spaceBetween={4}
                                 >
-                                    {res.brand_groups.map((res, pIdx) => {
-                                        return (
-                                            <SwiperSlide
-                                                key={`anchorBoxId_${pIdx}`}
-                                                id={`anchorBoxId_${pIdx}`}
-                                            >
-                                                <Image
-                                                    className={'w-full h-auto'}
-                                                    src={res.thumbnail}
-                                                    width={0}
-                                                    height={0}
-                                                    sizes="100vw"
-                                                    alt={'...'}
-                                                />
-                                            </SwiperSlide>
-                                        );
-                                    })}
+                                    {brand.brand_groups.map(
+                                        (brand_group, bgIdx) => {
+                                            return (
+                                                <SwiperSlide key={bgIdx}>
+                                                    <Image
+                                                        className={
+                                                            'w-full h-auto'
+                                                        }
+                                                        src={
+                                                            brand_group.thumbnail
+                                                        }
+                                                        width={0}
+                                                        height={0}
+                                                        sizes="100vw"
+                                                        alt={'...'}
+                                                    />
+                                                </SwiperSlide>
+                                            );
+                                        },
+                                    )}
                                 </Swiper>
                             </div>
                         );

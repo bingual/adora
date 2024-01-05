@@ -5,13 +5,13 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import Link from 'next/link';
-import { Product } from '@/types/type';
+import { ProductListTypes } from '@/types/type';
 import ProductList from '@/component/proudctList';
 
 export default function RecommendComp({
     productData,
 }: {
-    productData: Product;
+    productData: ProductListTypes;
 }) {
     const { productList, productCount } = productData;
 
@@ -39,10 +39,7 @@ export default function RecommendComp({
                 >
                     {productList.map((prod, pIdx) => {
                         return (
-                            <SwiperSlide
-                                id={`anchorBoxId_${pIdx}`}
-                                key={`anchorBoxId_${pIdx}`}
-                            >
+                            <SwiperSlide key={pIdx}>
                                 <ProductList prod={prod} />
                             </SwiperSlide>
                         );

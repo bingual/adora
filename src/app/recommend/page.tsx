@@ -37,10 +37,7 @@ export default async function Recommend({ params, searchParams }: Props) {
                 {productDataList.map(async (res, pIdx) => {
                     const productData = await res;
                     return (
-                        <RecommendComp
-                            key={`recommendId_${pIdx}`}
-                            productData={productData}
-                        />
+                        <RecommendComp key={pIdx} productData={productData} />
                     );
                 })}
             </div>

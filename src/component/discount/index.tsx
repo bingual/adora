@@ -17,7 +17,7 @@ export default function DiscountComp() {
                                 {prodItemList.map((res, pIdx) => {
                                     return (
                                         <div
-                                            key={`anchorBoxId_${pIdx}`}
+                                            key={pIdx}
                                             id={`anchorBoxId_${pIdx}`}
                                         >
                                             <div className={'sale-img'}>

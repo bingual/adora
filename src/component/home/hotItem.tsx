@@ -1,8 +1,12 @@
 'use client';
-import { Product } from '@/types/type';
+import { ProductListTypes } from '@/types/type';
 import ProductList from '@/component/proudctList';
 
-export default function HomeHotItem({ productData }: { productData: Product }) {
+export default function HomeHotItem({
+    productData,
+}: {
+    productData: ProductListTypes;
+}) {
     const { productList } = productData;
 
     return (
@@ -13,12 +17,7 @@ export default function HomeHotItem({ productData }: { productData: Product }) {
                     <div className={'prdList'}>
                         {productList.length > 0 &&
                             productList.map((prod, pIdx) => {
-                                return (
-                                    <ProductList
-                                        key={`anchorBoxId_${prod.idx}`}
-                                        prod={prod}
-                                    />
-                                );
+                                return <ProductList key={pIdx} prod={prod} />;
                             })}
                     </div>
                 </div>

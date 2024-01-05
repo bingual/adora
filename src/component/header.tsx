@@ -8,10 +8,10 @@ export default function Header() {
     const CompTab = () => {
         if (
             pathname === '/' ||
-            pathname.startsWith('/discount') ||
-            pathname.startsWith('/recommend') ||
-            pathname.startsWith('/comingsoon') ||
-            pathname.startsWith('/brand')
+            pathname === '/discount' ||
+            pathname === '/recommend' ||
+            pathname === '/comingsoon' ||
+            pathname === '/brand'
         ) {
             return (
                 <div className="main-tab">
