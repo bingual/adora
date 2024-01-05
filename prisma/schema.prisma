@@ -27,7 +27,7 @@ model User {
   provider    Provider @default(Credentials)
   login_level Int      @default(1)
   created_at  DateTime @default(now()) @db.Timestamptz()
-  updated_at  DateTime @updatedAt @db.Timestamp()
+  updated_at  DateTime @updatedAt @db.Timestamptz()
 }
 
 model Brand {
@@ -36,7 +36,7 @@ model Brand {
   description  String
   thumbnail    String
   created_at   DateTime      @default(now()) @db.Timestamptz()
-  updated_at   DateTime      @updatedAt @db.Timestamp()
+  updated_at   DateTime      @updatedAt @db.Timestamptz()
   products     Product[]     @relation("brand:product")
   brand_groups Brand_group[] @relation("brand:brand_group")
 }
@@ -46,6 +46,7 @@ model Brand_group {
   brand_name String
   thumbnail  String
   created_at DateTime @default(now()) @db.Timestamptz()
+  updated_at DateTime @updatedAt @db.Timestamptz()
   brand      Brand    @relation("brand:brand_group", fields: [brand_name], references: [brand_name], onDelete: Cascade)
 }
 
@@ -61,6 +62,6 @@ model Product {
   stock_quantity Int      @default(0)
   views          Int      @default(0)
   created_at     DateTime @default(now()) @db.Timestamptz()
-  updated_at     DateTime @updatedAt @db.Timestamp()
+  updated_at     DateTime @updatedAt @db.Timestamptz()
   brand          Brand    @relation("brand:product", fields: [brand_name], references: [brand_name], onDelete: Cascade)
 }

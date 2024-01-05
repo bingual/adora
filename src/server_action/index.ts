@@ -68,7 +68,7 @@ export const getBrandDetail = async (
             },
             orderBy: {
                 ...(sort === 0 && {
-                    idx: 'asc',
+                    created_at: 'desc',
                 }),
                 ...(sort === 1 && {
                     product_name: 'asc',
@@ -83,7 +83,7 @@ export const getBrandDetail = async (
                     brand_name: 'asc',
                 }),
                 ...(sort === 5 && {
-                    views: 'asc',
+                    views: 'desc',
                 }),
             },
             include: {

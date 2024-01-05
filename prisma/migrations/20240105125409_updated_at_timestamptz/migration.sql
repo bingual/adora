@@ -1,0 +1,8 @@
+-- AlterTable
+ALTER TABLE "Brand" ALTER COLUMN "updated_at" SET DATA TYPE TIMESTAMPTZ;
+
+-- AlterTable
+ALTER TABLE "Product" ALTER COLUMN "updated_at" SET DATA TYPE TIMESTAMPTZ;
+
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "updated_at" SET DATA TYPE TIMESTAMPTZ;
