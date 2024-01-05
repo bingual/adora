@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { Product } from '@/types/type';
 import ProductList from '@/component/proudctList';
 
-export default function RecommendMain({
+export default function RecommendComp({
     productData,
 }: {
     productData: Product;

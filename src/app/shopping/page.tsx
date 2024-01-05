@@ -1,6 +1,6 @@
-import ShoppingMain from '@/component/shopping';
+import ShoppingComp from '@/component/shopping';
 import { Props } from '@/types/type';
-import PaginationComponent from '@/component/pagination';
+import PaginationComp from '@/component/pagination';
 import { getBrandList, getProductList } from '@/server_action';
 import { notFound } from 'next/navigation';
 
@@ -19,11 +19,11 @@ export default async function Shopping({ params, searchParams }: Props) {
     return (
         <>
             <div className="shopping-wr">
-                <ShoppingMain
+                <ShoppingComp
                     brandList={brandData}
                     productData={shoppingData}
                 />
-                <PaginationComponent
+                <PaginationComp
                     count={Number(shoppingData.productCount)}
                     search={String(cate_no)}
                 />

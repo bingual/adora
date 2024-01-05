@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Brand } from '@/types/type';
 
-export default function BrandMain({ brandList }: { brandList: Brand }) {
+export default function BrandComp({ brandList }: { brandList: Brand }) {
     return (
         <>
             <div className={'brand-wr'}>

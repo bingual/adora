@@ -9,7 +9,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { Brand, Product } from '@/types/type';
 import ProductList from '@/component/proudctList';
 
-export default function ShoppingMain({
+export default function ShoppingComp({
     brandList,
     productData,
 }: {

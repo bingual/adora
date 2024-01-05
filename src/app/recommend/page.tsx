@@ -1,7 +1,7 @@
 'use server';
 import { Props } from '@/types/type';
 import { getProductList } from '@/server_action';
-import RecommendMain from '@/component/recommend';
+import RecommendComp from '@/component/recommend';
 
 export default async function Recommend({ params, searchParams }: Props) {
     const brandList = [
@@ -37,7 +37,7 @@ export default async function Recommend({ params, searchParams }: Props) {
                 {productDataList.map(async (res, pIdx) => {
                     const productData = await res;
                     return (
-                        <RecommendMain
+                        <RecommendComp
                             key={`recommendId_${pIdx}`}
                             productData={productData}
                         />

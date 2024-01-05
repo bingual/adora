@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-export default function LikeMain() {
+export default function LikeComp() {
     const [current, setCurrent] = useState(0);
 
     return (

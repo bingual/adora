@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 
-export default function DiscountMain() {
+export default function DiscountComp() {
     const [prodItemList, setProdItemList] = useState(new Array(22).fill(0));
 
     return (
