@@ -18,11 +18,11 @@ enum Provider {
 
 model User {
   idx         Int      @id @default(autoincrement())
-  username    String   @unique @db.Char(50)
-  password    String   @db.Char(100)
-  name        String   @db.Char(15)
-  email       String   @db.Char(50)
-  contact     String?  @db.Char(13)
+  username    String   @unique
+  password    String
+  name        String
+  email       String
+  contact     String?
   avatar      String?
   provider    Provider @default(Credentials)
   login_level Int      @default(1)

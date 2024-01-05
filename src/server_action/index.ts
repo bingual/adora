@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 import { redirect } from 'next/navigation';
 
 export const signup = async (formData: SignupFormTypes) => {
-    const { username, password, confirmPassword, name, email } = formData;
+    const { username, password, name, email } = formData;
 
     const saltRound = 10; // 패스워드 자리수
     const salt = await bcrypt.genSalt(saltRound); // 패스워드 생성
@@ -20,6 +20,7 @@ export const signup = async (formData: SignupFormTypes) => {
             password: hashedPassword,
         },
     });
+
     redirect('/auth/signin');
 };
 
