@@ -6,7 +6,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import KakaoProvider from 'next-auth/providers/kakao';
 import NaverProvider from 'next-auth/providers/naver';
 
-import db from '@/utils/db';
+import db_accelerate from '@/utils/db_accelerate';
 
 export const authOptions = {
   pages: {
@@ -37,7 +37,7 @@ export const authOptions = {
         },
       },
       async authorize(credentials, _req) {
-        const exUser = await db.user.findFirst({
+        const exUser = await db_accelerate.user.findFirst({
           select: {
             username: true,
             password: true,
@@ -88,7 +88,7 @@ export const authOptions = {
       if (account?.provider === 'kakao') {
         const { email, name, picture }: { email: string; name: string; picture: string } = token;
 
-        const exUser = await db.user.findFirst({
+        const exUser = await db_accelerate.user.findFirst({
           select: {
             username: true,
             name: true,
@@ -105,7 +105,7 @@ export const authOptions = {
         });
 
         if (!exUser) {
-          await db.user.create({
+          await db_accelerate.user.create({
             data: {
               username: email,
               name: name,
@@ -115,9 +115,27 @@ export const authOptions = {
               avatar: picture,
             },
           });
-        }
 
-        token = { ...exUser };
+          const revalidate = await db_accelerate.user.findFirst({
+            select: {
+              username: true,
+              name: true,
+              email: true,
+              contact: true,
+              provider: true,
+              avatar: true,
+              login_level: true,
+            },
+            where: {
+              username: email,
+              provider: Provider.kakao,
+            },
+          });
+
+          token = { ...revalidate };
+        } else {
+          token = { ...exUser };
+        }
 
         return token;
       }
@@ -135,7 +153,7 @@ export const authOptions = {
           };
         } = profile;
 
-        const exUser = await db.user.findFirst({
+        const exUser = await db_accelerate.user.findFirst({
           select: {
             username: true,
             name: true,
@@ -152,7 +170,7 @@ export const authOptions = {
         });
 
         if (!exUser) {
-          await db.user.create({
+          await db_accelerate.user.create({
             data: {
               username: email,
               name: name,
@@ -163,9 +181,25 @@ export const authOptions = {
               avatar: profile_image,
             },
           });
+          const revalidate = await db_accelerate.user.findFirst({
+            select: {
+              username: true,
+              name: true,
+              email: true,
+              contact: true,
+              provider: true,
+              avatar: true,
+              login_level: true,
+            },
+            where: {
+              username: email,
+              provider: Provider.naver,
+            },
+          });
+          token = { ...revalidate };
+        } else {
+          token = { ...exUser };
         }
-
-        token = { ...exUser };
 
         return token;
       }
@@ -174,7 +208,7 @@ export const authOptions = {
         token = { ...token, ...user };
       }
 
-      const exUser = await db.user.findFirst({
+      const exUser = await db_accelerate.user.findFirst({
         select: {
           username: true,
           name: true,
