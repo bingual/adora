@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import { redirect } from 'next/navigation';
 
 import { SignupFormTypes } from '@/types/type';
-import db from '@/utils/db';
+import db_accelerate from '@/utils/db_accelerate';
 
 export const signup = async (formData: SignupFormTypes) => {
   const { username, password, name, email } = formData;
@@ -14,7 +14,7 @@ export const signup = async (formData: SignupFormTypes) => {
   const salt = await bcrypt.genSalt(saltRound); // 패스워드 생성
   const hashedPassword = await bcrypt.hash(password.trim(), salt); // 패스워드 패턴
 
-  await db.user.create({
+  await db_accelerate.user.create({
     data: {
       username: username,
       name: name,
@@ -27,18 +27,19 @@ export const signup = async (formData: SignupFormTypes) => {
 };
 
 export const confirmUsername = async (username: string) => {
-  return !!(await db.user.findFirst({
+  return !!(await db_accelerate.user.findFirst({
     select: {
       username: true,
     },
     where: {
       username: username,
     },
+    cacheStrategy: { ttl: 30, swr: 60 },
   }));
 };
 
 export const getBrandList = async (sort?: boolean) => {
-  return db.brand.findMany({
+  return db_accelerate.brand.findMany({
     orderBy: {
       ...(sort
         ? {
@@ -49,12 +50,13 @@ export const getBrandList = async (sort?: boolean) => {
     include: {
       brand_groups: true,
     },
+    cacheStrategy: { ttl: 30, swr: 60 },
   });
 };
 
 export const getBrandDetail = async (page: number, take: number, idx?: number, sort?: number) => {
   const [productList, productCount] = await Promise.all([
-    db.product.findMany({
+    db_accelerate.product.findMany({
       take: take,
       skip: take * (page - 1),
       where: {
@@ -87,8 +89,9 @@ export const getBrandDetail = async (page: number, take: number, idx?: number, s
       include: {
         brand: true,
       },
+      cacheStrategy: { ttl: 30, swr: 60 },
     }),
-    db.product.count({
+    db_accelerate.product.count({
       where: {
         ...(idx && {
           brand: {
@@ -96,6 +99,7 @@ export const getBrandDetail = async (page: number, take: number, idx?: number, s
           },
         }),
       },
+      cacheStrategy: { ttl: 30, swr: 60 },
     }),
   ]);
 
@@ -118,7 +122,7 @@ export const getProductList = async (
   };
 
   const [productList, productCount] = await Promise.all([
-    db.product.findMany({
+    db_accelerate.product.findMany({
       take: take,
       skip: take * (page - 1),
       orderBy: {
@@ -146,8 +150,9 @@ export const getProductList = async (
           },
         }),
       },
+      cacheStrategy: { ttl: 30, swr: 60 },
     }),
-    db.product.count({
+    db_accelerate.product.count({
       ...(limit && {
         take: limit,
       }),
@@ -173,6 +178,7 @@ export const getProductList = async (
           },
         }),
       },
+      cacheStrategy: { ttl: 30, swr: 60 },
     }),
   ]);
 
