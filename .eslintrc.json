@@ -1,10 +1,45 @@
 {
+  "root": true,
   "extends": "next/core-web-vitals",
   "settings": {
-  "import/resolver": {
-    "node": {
-    "paths": ["src"]
+    "import/resolver": {
+      "node": {
+      "paths": ["src"]
+      }
     }
-  }
+  },
+
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react*",
+            "group": "builtin"
+          },
+          {
+            "pattern": "@/*",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": ["react*"],
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ]
   }
 }
