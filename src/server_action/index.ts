@@ -34,7 +34,7 @@ export const confirmUsername = async (username: string) => {
     where: {
       username: username,
     },
-    cacheStrategy: { ttl: 30, swr: 60 },
+    cacheStrategy: { ttl: 30 * 24 * 60 * 60 },
   }));
 };
 
@@ -50,7 +50,7 @@ export const getBrandList = async (sort?: boolean) => {
     include: {
       brand_groups: true,
     },
-    cacheStrategy: { ttl: 30, swr: 60 },
+    cacheStrategy: { ttl: 30 * 24 * 60 * 60 },
   });
 };
 
@@ -89,7 +89,7 @@ export const getBrandDetail = async (page: number, take: number, idx?: number, s
       include: {
         brand: true,
       },
-      cacheStrategy: { ttl: 30, swr: 60 },
+      cacheStrategy: { ttl: 30 * 24 * 60 * 60 },
     }),
     db_accelerate.product.count({
       where: {
@@ -99,7 +99,7 @@ export const getBrandDetail = async (page: number, take: number, idx?: number, s
           },
         }),
       },
-      cacheStrategy: { ttl: 30, swr: 60 },
+      cacheStrategy: { ttl: 30 * 24 * 60 * 60 },
     }),
   ]);
 
@@ -150,7 +150,7 @@ export const getProductList = async (
           },
         }),
       },
-      cacheStrategy: { ttl: 30, swr: 60 },
+      cacheStrategy: { ttl: 30 * 24 * 60 * 60 },
     }),
     db_accelerate.product.count({
       ...(limit && {
@@ -178,7 +178,7 @@ export const getProductList = async (
           },
         }),
       },
-      cacheStrategy: { ttl: 30, swr: 60 },
+      cacheStrategy: { ttl: 30 * 24 * 60 * 60 },
     }),
   ]);
 
