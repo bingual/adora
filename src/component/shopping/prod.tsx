@@ -1,9 +1,7 @@
-'use server';
-
 import ProductList from '@/component/proudctList';
 import { ProductListTypes } from '@/types/type';
 
-export default async function ShoppingProdComp({ productData }: { productData: ProductListTypes }) {
+export default function ShoppingProdComp({ productData }: { productData: ProductListTypes }) {
   const { productList } = productData;
   return (
     <>
